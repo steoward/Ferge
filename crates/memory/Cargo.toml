@@ -1,0 +1,8 @@
+[package]
+name = "ow-memory"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ow-core = { path = "../core" }
+parking_lot = "0.12"

@@ -1,0 +1,10 @@
+[package]
+name = "ow-physics"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ow-core = { path = "../core" }
+ow-math = { path = "../math" }
+ow-ecs = { path = "../ecs" }
+parking_lot = "0.12"

@@ -1,0 +1,8 @@
+[package]
+name = "ow-asset"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ow-math = { path = "../math" }
+ow-animation = { path = "../animation" }

@@ -1,0 +1,9 @@
+[package]
+name = "ow-ecs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ow-core = { path = "../core" }
+ow-math = { path = "../math" }
+parking_lot = "0.12"

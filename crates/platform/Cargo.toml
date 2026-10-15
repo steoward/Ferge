@@ -1,0 +1,13 @@
+[package]
+name = "ow-platform"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ow-core = { path = "../core" }
+ow-math = { path = "../math" }
+parking_lot = "0.12"
+crossbeam = "0.8"
+
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3", features = ["libloaderapi"] }

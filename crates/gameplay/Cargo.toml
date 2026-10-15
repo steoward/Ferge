@@ -1,0 +1,12 @@
+[package]
+name = "ow-gameplay"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ow-core = { path = "../core" }
+ow-math = { path = "../math" }
+ow-ecs = { path = "../ecs" }
+ow-input = { path = "../input" }
+ow-physics = { path = "../physics" }
+parking_lot = "0.12"

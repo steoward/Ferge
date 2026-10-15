@@ -1,0 +1,13 @@
+[package]
+name = "ow-world"
+version = "0.1.0"
+edition = "2021"
+authors = ["Open World Engine Contributors"]
+description = "World streaming, environment, atmosphere, population, and camera systems"
+
+[dependencies]
+ow-math = { path = "../math" }
+ow-core = { path = "../core" }
+ow-ecs = { path = "../ecs" }
+ow-physics = { path = "../physics" }
+parking_lot = "0.12"

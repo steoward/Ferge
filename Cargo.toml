@@ -1,0 +1,48 @@
+[package]
+name = "ferrum-rage"
+version = "0.1.0"
+edition = "2021"
+authors = ["FerrumRAGE Engine Contributors"]
+description = "FerrumRAGE: A high-performance clean-room open-world game engine in Rust inspired by RAGE"
+
+[workspace]
+members = [
+    "crates/core",
+    "crates/math",
+    "crates/memory",
+    "crates/input",
+    "crates/render",
+    "crates/physics",
+    "crates/audio",
+    "crates/ecs",
+    "crates/gameplay",
+    "crates/platform",
+    "crates/animation",
+    "crates/asset",
+    "crates/world",
+]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[dependencies]
+ow-core = { path = "crates/core" }
+ow-math = { path = "crates/math" }
+ow-memory = { path = "crates/memory" }
+ow-input = { path = "crates/input" }
+ow-render = { path = "crates/render" }
+ow-physics = { path = "crates/physics" }
+ow-audio = { path = "crates/audio" }
+ow-ecs = { path = "crates/ecs" }
+ow-gameplay = { path = "crates/gameplay" }
+ow-platform = { path = "crates/platform" }
+ow-animation = { path = "crates/animation" }
+ow-asset = { path = "crates/asset" }
+ow-world = { path = "crates/world" }
+
