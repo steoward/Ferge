@@ -7,4 +7,5 @@ edition = "2021"
 ow-core = { path = "../core" }
 ow-math = { path = "../math" }
 ow-ecs = { path = "../ecs" }
+ow-asset = { path = "../asset" }
 parking_lot = "0.12"

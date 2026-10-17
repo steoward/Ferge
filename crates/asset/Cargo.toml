@@ -6,3 +6,4 @@ edition = "2021"
 [dependencies]
 ow-math = { path = "../math" }
 ow-animation = { path = "../animation" }
+miniz_oxide = "0.8"

@@ -15,6 +15,7 @@ pub mod glb;
 pub mod json;
 pub mod model;
 pub mod loader;
+pub mod rpf;
 
 pub use glb::{GlbHeader, GlbChunk, read_glb_chunks};
 pub use json::{JsonValue, parse_json, JsonError};
@@ -26,3 +27,7 @@ pub use model::{
 };
 pub use loader::{load_glb, load_gltf_from_bytes, LoadedModel};
 pub use glb::GlbError;
+pub use rpf::{
+    RpfArchive, RpfEntry, RpfDirectoryEntry, RpfBinaryFileEntry, RpfResourceFileEntry,
+    RpfEncryption, RpfError, create_synthetic_rpf, RPF7_MAGIC, RPF7_SECTOR_SIZE,
+};

@@ -1,5 +1,6 @@
 use std::time::Instant;
 use std::collections::HashMap;
+use std::path::Path;
 use ow_math::{Mat4, Quat, Transform, Vec3};
 use ow_memory::pool::Pool;
 use ow_ecs::world::World;
@@ -13,6 +14,8 @@ use ow_gameplay::script::{ScriptManager, ScriptYield};
 use ow_world::streaming::{SectorId, StreamingBudget, StreamingConfig, StreamingManager, WorldChunk};
 use ow_world::environment::EnvironmentSystem;
 use ow_world::camera::OrbitCameraRig;
+use ow_asset::rpf::{RpfArchive, create_synthetic_rpf};
+use ow_render::texture_streamer::{TextureStreamer, StreamableTexture, TextureId, TextureFormat};
 
 struct PositionIntegrator;
 impl System for PositionIntegrator {
@@ -66,6 +69,7 @@ fn main() {
     bench_streaming();
     bench_atmosphere();
     bench_scripts();
+    bench_texture_streaming();
 
     println!("\nAll benchmark suites completed successfully.\n");
 }
@@ -274,8 +278,10 @@ fn bench_vehicles() {
 fn bench_streaming() {
     bench_section("Spatial World Streaming & Predictive Cache (ow-world)");
 
-    let mut config = StreamingConfig::default();
-    config.sector_size = 100.0;
+    let config = StreamingConfig {
+        sector_size: 100.0,
+        ..Default::default()
+    };
     let budget = StreamingBudget {
         max_memory_bytes: 256 * 1024 * 1024,
         current_memory_bytes: 0,
@@ -366,5 +372,114 @@ fn bench_scripts() {
         (el * 1_000_000.0) / frames as f64,
         us_per_tick * 1000.0,
         frames as f64 / el
+    );
+}
+
+fn bench_texture_streaming() {
+    bench_section("RPFv7 Archive IO & Progressive Texture Streaming (ow-asset / ow-render)");
+
+    // 1. Local GTA 5 Archive Direct IO Benchmarking
+    let gta5_rpf = Path::new(r"D:\Games\Grand Theft Auto V\mods\x64e.rpf");
+    if gta5_rpf.exists() {
+        println!("  Target GTA 5 Archive: D:\\Games\\Grand Theft Auto V\\mods\\x64e.rpf");
+        let t0 = Instant::now();
+        let mut archive = RpfArchive::open(gta5_rpf).expect("Failed to open GTA 5 archive");
+        let open_time = t0.elapsed().as_secs_f64();
+        println!(
+            "  RPF Table of Contents parsed : {:>8.2} ms | {} files | {} folders | Encryption: {:?}",
+            open_time * 1000.0,
+            archive.total_files(),
+            archive.total_directories(),
+            archive.encryption()
+        );
+
+        // Benchmark raw streaming bandwidth reading entries from the local GTA 5 archive
+        let mut total_bytes = 0usize;
+        let t0 = Instant::now();
+        let entries_to_test = ["levels/gta5/icons.rpf", "levels/gta5/ped_props.rpf", "levels/gta5/minimap.rpf", "levels/gta5/paths.rpf"];
+        for path in &entries_to_test {
+            if let Ok(bytes) = archive.read_raw_by_path(path) {
+                total_bytes += bytes.len();
+            }
+        }
+        let el = t0.elapsed().as_secs_f64();
+        let mb = total_bytes as f64 / (1024.0 * 1024.0);
+        let mb_per_sec = mb / el;
+        println!(
+            "  GTA 5 Local Archive Stream   : {:>8.2} ms | {:>8.2} MB read | {:>10.1} MB/s throughput",
+            el * 1000.0,
+            mb,
+            mb_per_sec
+        );
+    } else {
+        println!("  GTA 5 not detected at target path; running synthetic RPF7 container benchmark.");
+        let raw_chunk = vec![0xABu8; 1024 * 1024]; // 1 MB chunk
+        let synth_bytes = create_synthetic_rpf(&[
+            ("diffuse_tex_01.dds", &raw_chunk, false),
+            ("diffuse_tex_02.dds", &raw_chunk, false),
+            ("diffuse_tex_03.dds", &raw_chunk, false),
+            ("diffuse_tex_04.dds", &raw_chunk, false),
+        ]);
+        let mut archive = RpfArchive::from_bytes(synth_bytes).unwrap();
+        let t0 = Instant::now();
+        let b1 = archive.read_raw_by_path("diffuse_tex_01.dds").unwrap();
+        let b2 = archive.read_raw_by_path("diffuse_tex_02.dds").unwrap();
+        let el = t0.elapsed().as_secs_f64();
+        let mb = (b1.len() + b2.len()) as f64 / (1024.0 * 1024.0);
+        println!(
+            "  Synthetic RPF Stream         : {:>8.2} ms | {:>8.2} MB read | {:>10.1} MB/s throughput",
+            el * 1000.0,
+            mb,
+            mb / el
+        );
+    }
+
+    // 2. Open-World Progressive Mipmap Streaming Simulation
+    // 1,000 textures in a 2000m x 2000m metropolitan area, sports car moving at 120 km/h (33.3 m/s)
+    let texture_count = 1_000;
+    let mut streamer = TextureStreamer::new(512 * 1024 * 1024); // 512 MB VRAM budget
+    streamer.set_bandwidth_limit(64 * 1024 * 1024); // 64 MB / frame transfer cap
+
+    for i in 0..texture_count {
+        let x = ((i % 50) as f32 - 25.0) * 40.0;
+        let z = ((i / 50) as f32) * 50.0;
+        let format = if i % 2 == 0 { TextureFormat::Bc1Dxt1 } else { TextureFormat::Bc7 };
+        let tex = StreamableTexture::new(
+            TextureId(i as u64),
+            format!("asset_tex_{:04}", i),
+            2048,
+            2048,
+            format,
+            Vec3::new(x, 0.0, z),
+        );
+        streamer.register_texture(tex);
+    }
+
+    let frames = 300;
+    let speed = 33.3; // 120 km/h in m/s
+    let dt = 1.0 / 60.0;
+    let mut cam_pos = Vec3::new(0.0, 1.8, 0.0);
+    let cam_dir = Vec3::new(0.0, 0.0, 1.0);
+
+    let t0 = Instant::now();
+    for _ in 0..frames {
+        cam_pos.z += speed * dt;
+        streamer.update(cam_pos, cam_dir, dt);
+    }
+    let el = t0.elapsed().as_secs_f64();
+    let stats = streamer.stats();
+
+    println!(
+        "  {:>4} Textures (512MB Budget) : {:>6.2} µs/frame | {:>5.0} FPS headroom | {:>6.1} MB active VRAM",
+        texture_count,
+        (el * 1_000_000.0) / frames as f64,
+        frames as f64 / el,
+        stats.current_vram_used_bytes as f64 / (1024.0 * 1024.0)
+    );
+    println!(
+        "  Progressive Mip Streamed     : {:>6.1} MB total | {:>8.1} MB/s effective throughput | {} evictions",
+        stats.cumulative_bytes_streamed as f64 / (1024.0 * 1024.0),
+        (stats.cumulative_bytes_streamed as f64 / (1024.0 * 1024.0)) / el,
+        stats.mips_evicted_this_frame
     );
 }
