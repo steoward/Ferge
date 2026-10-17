@@ -18,10 +18,10 @@
     <text x="60" y="54" fill="#8b949e" font-size="12.5">Ferge (Rust) vs Subject A: RAGE Original (GTA 5 C++)</text>
 
     <!-- Dedicated Legend Row (Independent from Title) -->
-    <rect x="60" y="70" width="14" height="14" rx="3" fill="#38bdf8"/>
+    <rect x="60" y="70" width="14" height="14" rx="3" fill="#fb923c"/>
     <text x="82" y="82" fill="#e6edf3" font-size="12.5" font-weight="600">Ferge (Rust)</text>
-    <rect x="180" y="70" width="14" height="14" rx="3" fill="#fb923c"/>
-    <text x="202" y="82" fill="#e6edf3" font-size="12.5" font-weight="600">Subject A (RAGE Original C++)</text>
+    <rect x="180" y="70" width="14" height="14" rx="3" fill="#38bdf8"/>
+    <text x="202" y="82" fill="#e6edf3" font-size="12.5" font-weight="600">Subject A: RAGE Original (C++)</text>
 
     <!-- Grid Lines & Ticks -->
     <line x1="60" y1="370.0" x2="850" y2="370.0" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
@@ -40,40 +40,40 @@
     <line x1="60" y1="370" x2="850" y2="370" stroke="#30363d" stroke-width="1.5"/>
 
     <!-- Category 1: SIMD Math (286.0 M ops/s vs 95.0 M ops/s) -->
-    <rect x="114" y="122.1" width="42" height="247.9" rx="4" fill="url(#blueGrad)" filter="url(#glow)"/>
-    <text x="135" y="114.0" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">286.0</text>
-    <rect x="164" y="287.7" width="42" height="82.3" rx="4" fill="url(#orangeGrad)" filter="url(#glow)"/>
-    <text x="185" y="280.7" fill="#fb923c" font-size="12" font-weight="700" text-anchor="middle">95.0</text>
+    <rect x="114" y="122.1" width="42" height="247.9" rx="4" fill="url(#orangeGrad)" filter="url(#glow)"/>
+    <text x="135" y="114.0" fill="#fb923c" font-size="12" font-weight="700" text-anchor="middle">286.0</text>
+    <rect x="164" y="287.7" width="42" height="82.3" rx="4" fill="url(#blueGrad)" filter="url(#glow)"/>
+    <text x="185" y="280.7" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">95.0</text>
     <text x="160" y="394" fill="#e6edf3" font-size="12.5" font-weight="600" text-anchor="middle">SIMD Math</text>
-    <rect x="134" y="406" width="52" height="20" rx="10" fill="#1f6feb" fill-opacity="0.25" stroke="#388bfd" stroke-width="1"/>
-    <text x="160" y="420" fill="#58a6ff" font-size="11" font-weight="700" text-anchor="middle">3.0x</text>
+    <rect x="134" y="406" width="52" height="20" rx="10" fill="#bd561d" fill-opacity="0.25" stroke="#f0883e" stroke-width="1"/>
+    <text x="160" y="420" fill="#fb923c" font-size="11" font-weight="700" text-anchor="middle">3.0x</text>
 
     <!-- Category 2: Generational Pool (62.6 M ops/s vs 22.0 M ops/s) -->
-    <rect x="314" y="315.7" width="42" height="54.3" rx="4" fill="url(#blueGrad)" filter="url(#glow)"/>
-    <text x="335" y="308.7" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">62.6</text>
-    <rect x="364" y="350.9" width="42" height="19.1" rx="4" fill="url(#orangeGrad)" filter="url(#glow)"/>
-    <text x="385" y="343.9" fill="#fb923c" font-size="12" font-weight="700" text-anchor="middle">22.0</text>
+    <rect x="314" y="315.7" width="42" height="54.3" rx="4" fill="url(#orangeGrad)" filter="url(#glow)"/>
+    <text x="335" y="308.7" fill="#fb923c" font-size="12" font-weight="700" text-anchor="middle">62.6</text>
+    <rect x="364" y="350.9" width="42" height="19.1" rx="4" fill="url(#blueGrad)" filter="url(#glow)"/>
+    <text x="385" y="343.9" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">22.0</text>
     <text x="360" y="394" fill="#e6edf3" font-size="12.5" font-weight="600" text-anchor="middle">Generational Pool</text>
-    <rect x="334" y="406" width="52" height="20" rx="10" fill="#1f6feb" fill-opacity="0.25" stroke="#388bfd" stroke-width="1"/>
-    <text x="360" y="420" fill="#58a6ff" font-size="11" font-weight="700" text-anchor="middle">2.8x</text>
+    <rect x="334" y="406" width="52" height="20" rx="10" fill="#bd561d" fill-opacity="0.25" stroke="#f0883e" stroke-width="1"/>
+    <text x="360" y="420" fill="#fb923c" font-size="11" font-weight="700" text-anchor="middle">2.8x</text>
 
     <!-- Category 3: RSC7 3D Models (191.9k models/s vs 55.0k models/s) -->
-    <rect x="514" y="203.7" width="42" height="166.3" rx="4" fill="url(#blueGrad)" filter="url(#glow)"/>
-    <text x="535" y="196.7" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">191.9k</text>
-    <rect x="564" y="322.3" width="42" height="47.7" rx="4" fill="url(#orangeGrad)" filter="url(#glow)"/>
-    <text x="585" y="315.3" fill="#fb923c" font-size="12" font-weight="700" text-anchor="middle">55.0k</text>
+    <rect x="514" y="203.7" width="42" height="166.3" rx="4" fill="url(#orangeGrad)" filter="url(#glow)"/>
+    <text x="535" y="196.7" fill="#fb923c" font-size="12" font-weight="700" text-anchor="middle">191.9k</text>
+    <rect x="564" y="322.3" width="42" height="47.7" rx="4" fill="url(#blueGrad)" filter="url(#glow)"/>
+    <text x="585" y="315.3" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">55.0k</text>
     <text x="560" y="394" fill="#e6edf3" font-size="12.5" font-weight="600" text-anchor="middle">RSC7 Models</text>
-    <rect x="534" y="406" width="52" height="20" rx="10" fill="#1f6feb" fill-opacity="0.25" stroke="#388bfd" stroke-width="1"/>
-    <text x="560" y="420" fill="#58a6ff" font-size="11" font-weight="700" text-anchor="middle">3.5x</text>
+    <rect x="534" y="406" width="52" height="20" rx="10" fill="#bd561d" fill-opacity="0.25" stroke="#f0883e" stroke-width="1"/>
+    <text x="560" y="420" fill="#fb923c" font-size="11" font-weight="700" text-anchor="middle">3.5x</text>
 
     <!-- Category 4: RPFv7 Streaming (1,303.9 MB/s vs 140.0 MB/s - 9.3x Off-Chart Surge) -->
-    <rect x="704" y="112.0" width="42" height="258.0" rx="4" fill="url(#blueGrad)" filter="url(#glow)"/>
+    <rect x="704" y="112.0" width="42" height="258.0" rx="4" fill="url(#orangeGrad)" filter="url(#glow)"/>
     <!-- Axis Break Symbol for Off-Scale 1,303.9 MB/s -->
     <path d="M 700 148 L 725 142 L 725 146 L 750 140" stroke="#0d1117" stroke-width="3" fill="none"/>
-    <text x="725" y="104.0" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">1,303.9</text>
-    <rect x="754" y="248.7" width="42" height="121.3" rx="4" fill="url(#orangeGrad)" filter="url(#glow)"/>
-    <text x="775" y="241.7" fill="#fb923c" font-size="12" font-weight="700" text-anchor="middle">140.0</text>
+    <text x="725" y="104.0" fill="#fb923c" font-size="12" font-weight="700" text-anchor="middle">1,303.9</text>
+    <rect x="754" y="248.7" width="42" height="121.3" rx="4" fill="url(#blueGrad)" filter="url(#glow)"/>
+    <text x="775" y="241.7" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">140.0</text>
     <text x="750" y="394" fill="#e6edf3" font-size="12.5" font-weight="600" text-anchor="middle">RPFv7 Streaming</text>
-    <rect x="724" y="406" width="52" height="20" rx="10" fill="#1f6feb" fill-opacity="0.25" stroke="#388bfd" stroke-width="1"/>
-    <text x="750" y="420" fill="#58a6ff" font-size="11" font-weight="700" text-anchor="middle">9.3x</text>
+    <rect x="724" y="406" width="52" height="20" rx="10" fill="#bd561d" fill-opacity="0.25" stroke="#f0883e" stroke-width="1"/>
+    <text x="750" y="420" fill="#fb923c" font-size="11" font-weight="700" text-anchor="middle">9.3x</text>
 </svg>

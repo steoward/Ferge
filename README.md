@@ -1,3 +1,9 @@
+<div align="center">
+
+**English** · [العربية](docs/readme/README_ar.md)
+
+</div>
+
 # Ferge Engine (Fe Rust Game Engine)
 
 A high-performance, clean-room open-world game engine written in **Rust**, built from scratch using
@@ -14,8 +20,8 @@ To eliminate ambiguity across all visual charts and performance graphs:
 
 | Swatch / Identifier | Engine | Technology & Implementation | Role in Benchmark |
 |:---:|:---|:---|:---|
-| 🟦 **Vibrant Blue (`#38bdf8`)** | **Ferge** | Pure Rust (opt-level 3, LTO, SIMD-vectorized) | Our Clean-Room Independent Engine |
-| 🟧 **Vibrant Orange (`#fb923c`)** | **Subject A (RAGE Original)** | C++ (GTA5.exe production runtime) | AAA Commercial Benchmark Baseline |
+| 🟧 **Vibrant Orange (`#fb923c`)** | **Ferge** | Pure Rust (opt-level 3, LTO, SIMD-vectorized) | Our Clean-Room Independent Engine |
+| 🟦 **Vibrant Blue (`#38bdf8`)** | **Subject A (RAGE Original)** | C++ (GTA5.exe production runtime) | AAA Commercial Benchmark Baseline |
 
 ---
 
@@ -24,7 +30,7 @@ To eliminate ambiguity across all visual charts and performance graphs:
 ```mermaid
 flowchart TD
     classDef storage fill:#238636,stroke:#2ea043,stroke-width:2px,color:#ffffff;
-    classDef rust fill:#1f6feb,stroke:#388bfd,stroke-width:2px,color:#ffffff;
+    classDef rust fill:#ea580c,stroke:#fb923c,stroke-width:2px,color:#ffffff;
     classDef gpu fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff;
 
     subgraph Disk["Disk Storage (Local GTA 5 Archives)"]
@@ -87,14 +93,14 @@ flowchart TD
 
 | Subsystem & Benchmark | Engine Comparison | Measured Value | Visual Comparison Bar | Performance Ratio |
 |:----------------------|:------------------|:---------------|:----------------------|:------------------:|
-| **SIMD Vector Math**<br>*(Vec3 Dot/Cross/Normalize)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **286.0 M ops/s**<br>95.0 M ops/s | `████████████████████`<br>`███████░░░░░░░░░░░░░` | **3.0x Faster** 🏆 |
-| **Generational Memory Pool**<br>*(Insert / Lookup / Recyle)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **62.6 M ops/s**<br>22.0 M ops/s | `████████████████████`<br>`███████░░░░░░░░░░░░░` | **2.8x Faster** 🏆 |
-| **ECS Entity Simulation**<br>*(5,000 Active Entities)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **959 FPS (1.04 ms)**<br>160 FPS (6.25 ms) | `████████████████████`<br>`███░░░░░░░░░░░░░░░░░` | **6.0x Faster** 🏆 |
-| **Vehicle Suspension Dynamics**<br>*(Hooke + Pacejka Tire Slip)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **0.26 µs / veh**<br>0.95 µs / veh | `████████████████████`<br>`█████░░░░░░░░░░░░░░░` | **3.6x Faster** 🏆 |
-| **RPFv7 Archive Streaming**<br>*(Local GTA 5 x64e.rpf)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **1,303.9 MB/s**<br>140.0 MB/s | `████████████████████`<br>`██░░░░░░░░░░░░░░░░░░` | **9.3x Faster** 🏆 |
-| **RSC7 3D Model Extraction**<br>*(GTA 5 .ydr Drawables)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **191.9k models/s**<br>55.0k models/s | `████████████████████`<br>`█████░░░░░░░░░░░░░░░` | **3.5x Faster** 🏆 |
-| **3D Framebuffer Rasterizer**<br>*(640x480 Phong Shading)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **213 FPS (4.70 ms)**<br>N/A (D3D11 HW) | `████████████████████`<br>`░░░░░░░░░░░░░░░░░░░░` | **CPU Pipeline** 🏆 |
-| **Active Memory Footprint**<br>*(Base Executable + System)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **4.2 MB**<br>850.0 MB | `█░░░░░░░░░░░░░░░░░░░`<br>`████████████████████` | **99.5% Smaller** 🏆 |
+| **SIMD Vector Math**<br>*(Vec3 Dot/Cross/Normalize)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **286.0 M ops/s**<br>95.0 M ops/s | `████████████████████`<br>`███████░░░░░░░░░░░░░` | **3.0x Faster** 🏆 |
+| **Generational Memory Pool**<br>*(Insert / Lookup / Recyle)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **62.6 M ops/s**<br>22.0 M ops/s | `████████████████████`<br>`███████░░░░░░░░░░░░░` | **2.8x Faster** 🏆 |
+| **ECS Entity Simulation**<br>*(5,000 Active Entities)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **959 FPS (1.04 ms)**<br>160 FPS (6.25 ms) | `████████████████████`<br>`███░░░░░░░░░░░░░░░░░` | **6.0x Faster** 🏆 |
+| **Vehicle Suspension Dynamics**<br>*(Hooke + Pacejka Tire Slip)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **0.26 µs / veh**<br>0.95 µs / veh | `████████████████████`<br>`█████░░░░░░░░░░░░░░░` | **3.6x Faster** 🏆 |
+| **RPFv7 Archive Streaming**<br>*(Local GTA 5 x64e.rpf)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **1,303.9 MB/s**<br>140.0 MB/s | `████████████████████`<br>`██░░░░░░░░░░░░░░░░░░` | **9.3x Faster** 🏆 |
+| **RSC7 3D Model Extraction**<br>*(GTA 5 .ydr Drawables)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **191.9k models/s**<br>55.0k models/s | `████████████████████`<br>`█████░░░░░░░░░░░░░░░` | **3.5x Faster** 🏆 |
+| **3D Framebuffer Rasterizer**<br>*(640x480 Phong Shading)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **213 FPS (4.70 ms)**<br>N/A (D3D11 HW) | `████████████████████`<br>`░░░░░░░░░░░░░░░░░░░░` | **CPU Pipeline** 🏆 |
+| **Active Memory Footprint**<br>*(Base Executable + System)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **4.2 MB**<br>850.0 MB | `█░░░░░░░░░░░░░░░░░░░`<br>`████████████████████` | **99.5% Smaller** 🏆 |
 
 > **Full Detailed Benchmarks**: See [BENCHMARKS.md](BENCHMARKS.md) for complete empirical data tables, cache hit analysis, and architectural comparisons.
 
@@ -187,77 +193,6 @@ cargo run --release --bin benchmark # run full performance benchmark suite
 
 ---
 
-## 🌍 الدليل التعريفي والمعماري (عربي / Arabic)
-
-### 1. نبذة عن المحرك وأصل التسمية (Origin of the Name)
-محرك **Ferge** (يُنطق *فيرج*) هو محرك ألعاب ثلاثي الأبعاد متكامل وعالي الأداء للعوالم المفتوحة، تم بناؤه بالكامل من الصفر بلغة **Rust**. صُمم المحرك ليوفر نموذجاً معمارياً حديثاً يرتكز على البرمجة الموجهة للبيانات (Data-Oriented ECS)، والأمان الكامل في إدارة الذاكرة، مع تحقيق أداء متفوق يضاهي ويتجاوز محركات الألعاب العالمية من فئة AAA مثل محرك Rockstar Games الشهير (**RAGE** - Rockstar Advanced Game Engine) المستخدم في ألعاب ضخمة مثل Grand Theft Auto V.
-
-> **سر التسمية (Etymology)**:
-> اسم **Ferge** يجمع بين الرمز الكيميائي لعنصر الحديد (**Fe**، الذي يمثل معدن الصدأ **Rust** ولغة البرمجة التي بُني بها المحرك) مع اسم المحرك الأصلي المرجعي **RAGE**، ليشكل هذا الاندماج الاختصار الهندسي الدقيق: **(Fe Rust Game Engine)**.
-
----
-
-### 2. النموذج القانوني الصارم للهندسة النظيفة (Strict Clean-Room Legal Paradigm)
-يتبع محرك **Ferge** نموذج **الهندسة العكسية النظيفة (Clean-Room Reverse Engineering)** الصارم، مستنداً إلى نفس الأسس والضوابط القانونية المتبعة في مشاريع المحركات المفتوحة المرموقة عالمياً مثل **OpenMW** و **ScummVM** و **OpenRCT2**:
-
-1. **صفر أصول محمية في المستودع (Zero Copyrighted Assets in Git)**:
-   - لا يحتوي هذا المستودع البرمجي على أي كود مصدري مسروق، أو ملفات ثنائية مستخرجة، أو خامات رسومية (Textures)، أو ملفات صوتية، أو نماذج مجسمات ثلاثية الأبعاد (Drawables)، أو حزم أرشيف ألعاب تجارية (`.rpf`) تابعة لشركة Rockstar Games أو Take-Two Interactive.
-   - كافة الأسطر البرمجية المضمنة هنا هي كود أصلي مكتوب من الصفر بلغة Rust بواسطة مطوري المشروع.
-2. **القراءة المباشرة والعابرة من الملفات المحلية للمستخدم (On-the-Fly Local Reading)**:
-   - أثناء تشغيل المحرك ميدانياً، يقرأ المحرك ملفات اللعبة الأصلية المملوكة للمستخدم والموجودة على قرصه المحلي (`D:\Games\Grand Theft Auto V`) بصورة فورية ومؤقتة في الذاكرة دون نسخها أو تخزينها أو توزيعها، لغرض التحليل الأكاديمي والقياس المقارن للأداء.
-3. **التوافق التام مع بيئات البناء الآلي المستقلة (Headless CI / Synthetic Data)**:
-   - عند تشغيل المحرك على خوادم أو أجهزة لا تحتوي على لعبة GTA 5 مثبتة، يقوم المحرك تلقائياً بإنشاء حاويات بيانات واختبارات افتراضية اصطناعية (`Synthetic RPF / RSC7`) في الذاكرة لضمان قابلية إعادة تشغيل وفحص كامل حزمة الاختبارات بنسبة نجاح 100%.
-4. **التحليل المعماري للمفاهيم الرياضية المجردة**:
-   - اقتصر الفحص الميكانيكي للهياكل الثنائية لملف `GTA5.exe` عبر أدوات التحليل الهندسي (REA و Ghidra) على استخلاص المفاهيم الرياضية والمعمارية العامة المجردة غير الخاضعة للملكية الفكرية، مثل: شبكات البث المكاني (Spatial Grid Streaming)، وتقنية التحميل التنبئي بالسرعة (Predictive Velocity Caching)، ومعادلات نوابض هوك (Hooke's Law)، ونماذج احتكاك إطارات السيارات (Pacejka Tire Slip Model)، والجدولة التعاونية للألياف البرمجية (Script Fibers).
-
----
-
-### 3. المعمارية التقنية للمحرك (13 Modular Crates Architecture)
-تم تصميم المحرك على نمط معماري يتألف من **13 حزمة برمجية مستقلة** (Workspace Crates)، تعتمد كلياً على البرمجة الموجهة للبيانات ونظام الكيانات والمكونات (ECS)، وتمنع استخدام الأكواد غير الآمنة (`#![forbid(unsafe_code)]` في الحزم المعنية):
-
-| الحزمة البرمجية (Crate) | المسؤولية المعمارية والوظيفة داخل المحرك |
-|:----------------------|:----------------------------------------|
-| **`ow-math`** | مكتبة الرياضيات والتحويلات الخطية (`Vec2/3/4`, `Mat3/4`, `Quat`, `Transform`) مدعومة بتعليمات SIMD المتجهة المباشرة وبدون أي تخصيص في الذاكرة الديناميكية (Zero-Alloc POD). |
-| **`ow-core`** | إقلاع المحرك، حلقة التحكم الرئيسية، شجرة المشهد (Scene Graph)، وإدارة الموارد ونظام الأحداث. |
-| **`ow-memory`** | مخصصات الذاكرة الجيلية الموجهة للأداء (Generational Pool Allocator) ومخصصات Bump و Free-List لمنع تجزؤ الذاكرة نهائياً. |
-| **`ow-input`** | معالجة دخل لوحة المفاتيح، الفأرة، وأذرع التحكم مع دعم مناطق الخمول (Deadzone Mapping) وتعيين الإجراءات. |
-| **`ow-ecs`** | نظام الكيانات والمكونات الموجه للبيانات عالي السرعة، مع جدولة أولويات الأنظمة عبر مراحل متسلسلة. |
-| **`ow-physics`** | نظام الفيزياء والكشف الدقيق عن التصادم (GJK / EPA) والتقسيم الفضائي عريض النطاق (Spatial Hash Grid) وحساب الدوافع الارتدادية. |
-| **`ow-render`** | مسارات التصيير ثلاثية الأبعاد، الكاميرات، خط أنابيب البث التصاعدي للخامات (Progressive Mipmap Streamer)، والمفرز البرمجي (Software Rasterizer). |
-| **`ow-audio`** | مستمع الصوت ثلاثي الأبعاد، القنوات المكانية، وإدارة مجموعات الخلط الصوتي. |
-| **`ow-animation`** | الهياكل العظمية الحركية، التوليد البيني للرباعيات (Slerp Tracks)، أشجار المزج 1D/2D، والحركية العكسية ثنائية العظام (2-Bone IK). |
-| **`ow-asset`** | قارئ حزم RPFv7 النظيف المتوافق مع معيار OpenIV، ومحلل نماذج RSC7 (`.ydr`) ثلاثية الأبعاد، ومحمل ملفات glTF 2.0 / GLB الثنائية. |
-| **`ow-gameplay`** | متحكم الشخصيات، فيزياء قيادة المركبات رباعية العجلات، ناقل الحركة الأوتوماتيكي، والذكاء الاصطناعي، وألياف السكريبت التعاونية. |
-| **`ow-world`** | البث المكاني التنبئي لقطاعات العالم المفتوح، الدورة الفلكية للشمس والقمر، الطقس الديناميكي، كاميرا المدار الذكية المانعة للاختراق، وتوليد الحشود والمرور. |
-| **`ow-platform`** | التجريد عبر المنصات لإنشاء النوافذ، وإدارة مصفوفات خيوط المعالجة (Thread Pool)، ونظام الملفات، والمؤقتات الزمنية فائقة الدقة. |
-
----
-
-### 4. الميزات الهندسية والقدرات الموازية لمحرك RAGE
-1. **قارئ حزم RPFv7 وتدفق الخامات التصاعدي**:
-   - قراءة وتحليل ترويسة الأرشيف وفهرس المجلدات خلال **0.15 مللي ثانية**، مع تدفق أرشيف بيانات محلي بسرعة **1,303.9 ميجابايت/ثانية**.
-   - إدارة هرم خامات متعدد المستويات (LOD Mipmaps) لأكثر من 1,000 خامة في الوقت الحقيقي، مع تفريغ ذكي للذاكرة (LRU Eviction) تحت سقف ذاكرة VRAM محدد (512 ميجابايت).
-2. **البث الفضائي للعالم المفتوح (Spatial World Streaming)**:
-   - تقسيم العالم إلى شبكة لانهائية مع مستويات تفاصيل متدرجة (High, Medium, Low, Impostor).
-   - استخدام خوارزمية التنبؤ بمتجه السرعة ($p_{\text{focus}} = p + v \cdot \Delta t$) لتحميل القطاعات الأمامية مسبقاً أثناء قيادة المركبات بسرعات عالية مع تفريغ القطاعات البعيدة بسلاسة.
-3. **فيزياء المركبات رباعية العجلات (4-Wheel Raycast Dynamics)**:
-   - محاكاة مستقلة لكل عجلة باستخدام نوابض هوك ومخمدات الصدمات التمايزية.
-   - ناقل حركة أوتوماتيكي ذكي يغير التروس وفق منحنيات عزم ودوران المحرك (RPM).
-   - نموذج انزلاق الإطارات الجانبي (Pacejka Slip Approximation) واستجابة واقعية لفرامل اليد وبدء التفحيط (Drift).
-4. **البيئة والغلاف الجوي والطقس الديناميكي**:
-   - دورة فلكية واقعية على مدار 24 ساعة تحسب بدقة متجهات موقع الشمس والقمر وزوايا السمت.
-   - أوضاع طقس متعددة (صحو، غائم، ممطر، عاصف، ضبابي) مع مزج مستمر لعوامل الرؤية وتراكم تجمعات المياه (Puddles) على الأسطح أثناء المطر.
-5. **كاميرا المدار الذكية المانعة لاختراق العوائق (Orbit Camera Rig)**:
-   - تتبع ديناميكي ناعم مع حساب مرن لتسارع المركبة وتوسيع مجال الرؤية (FOV) حسب السرعة.
-   - فحص شعاعي تنبئي مستمر مع مجسمات التصادم (AABB Raycast) لمنع الكاميرا من اختراق الحوائط والمباني نهائياً.
-6. **محاكاة الحشود والحركة المرورية (Ambient Population & Traffic)**:
-   - شبكة طرق موجهة بمسارات وسرعات محددة، تفرخ المركبات والمشاة في حلقة دائرية أمام اللاعب وتفرغها تلقائياً عند الابتعاد.
-7. **ألياف السكريبت التعاونية (Cooperative Script Fibers)**:
-   - إدارة مهام وأحداث العالم بدون إيقاف حلقة التصيير عبر ألياف برمجية خفيفة الوزن تدعم الإرجاع المؤقت (`WaitFrames`, `WaitSeconds`, `WaitUntil`).
-
----
-
 ## License
 
 Apache-2.0. See `LICENSE`.
-

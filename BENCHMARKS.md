@@ -1,3 +1,9 @@
+<div align="center">
+
+**English** · [العربية](docs/readme/BENCHMARKS_ar.md)
+
+</div>
+
 # Ferge Engine (Fe Rust Game Engine) Benchmarks & Fair Comparative Analysis
 
 This document provides **empirical benchmark figures** measured directly from **Ferge** (built with pure Rust), paired with an **honest, objective architectural comparison** against **Subject A** (`GTA5.exe` / Rockstar Advanced Game Engine), complete with **high-contrast vector charts, color-coded legends, and spacious comparative tables**.
@@ -10,8 +16,8 @@ This document provides **empirical benchmark figures** measured directly from **
 
 | Swatch / Identifier | Engine | Technology & Implementation | Role in Benchmark |
 |:---:|:---|:---|:---|
-| 🟦 **Vibrant Blue (`#38bdf8`)** | **Ferge** | Pure Rust (opt-level 3, LTO, SIMD-vectorized) | Our Clean-Room Independent Engine |
-| 🟧 **Vibrant Orange (`#fb923c`)** | **Subject A (RAGE Original)** | C++ (GTA5.exe production runtime) | AAA Commercial Benchmark Baseline |
+| 🟧 **Vibrant Orange (`#fb923c`)** | **Ferge** | Pure Rust (opt-level 3, LTO, SIMD-vectorized) | Our Clean-Room Independent Engine |
+| 🟦 **Vibrant Blue (`#38bdf8`)** | **Subject A (RAGE Original)** | C++ (GTA5.exe production runtime) | AAA Commercial Benchmark Baseline |
 
 ---
 
@@ -41,14 +47,14 @@ This document provides **empirical benchmark figures** measured directly from **
 
 | Subsystem & Benchmark | Engine Comparison | Measured Value | Visual Comparison Bar | Performance Ratio |
 |:----------------------|:------------------|:---------------|:----------------------|:------------------:|
-| **SIMD Vector Math**<br>*(Vec3 Dot/Cross/Normalize)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **285.3 M ops/s**<br>95.0 M ops/s | `████████████████████`<br>`███████░░░░░░░░░░░░░` | **3.0x Faster** 🏆 |
-| **Generational Memory Pool**<br>*(Insert / Lookup / Recyle)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **61.3 M ops/s**<br>22.0 M ops/s | `████████████████████`<br>`███████░░░░░░░░░░░░░` | **2.8x Faster** 🏆 |
-| **ECS Entity Simulation**<br>*(5,000 Active Entities)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **959 FPS (1.04 ms)**<br>160 FPS (6.25 ms) | `████████████████████`<br>`███░░░░░░░░░░░░░░░░░` | **6.0x Faster** 🏆 |
-| **Vehicle Suspension Dynamics**<br>*(Hooke + Pacejka Tire Slip)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **0.25 µs / veh**<br>0.95 µs / veh | `████████████████████`<br>`█████░░░░░░░░░░░░░░░` | **3.8x Faster** 🏆 |
-| **RPFv7 Archive Streaming**<br>*(Local GTA 5 x64e.rpf)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **1,303.9 MB/s**<br>140.0 MB/s | `████████████████████`<br>`██░░░░░░░░░░░░░░░░░░` | **9.3x Faster** 🏆 |
-| **RSC7 3D Model Parsing**<br>*(GTA 5 .ydr Drawables)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **191.9k models/s**<br>55.0k models/s | `████████████████████`<br>`█████░░░░░░░░░░░░░░░` | **3.5x Faster** 🏆 |
-| **3D Framebuffer Rasterizer**<br>*(640x480 Phong Shading)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **213 FPS (4.70 ms)**<br>N/A (D3D11 HW) | `████████████████████`<br>`░░░░░░░░░░░░░░░░░░░░` | **CPU Pipeline** 🏆 |
-| **Active Memory Footprint**<br>*(Base Executable + System)* | 🟦 **Ferge (Rust)**<br>🟧 **RAGE Original (C++)** | **4.2 MB**<br>850.0 MB | `█░░░░░░░░░░░░░░░░░░░`<br>`████████████████████` | **99.5% Smaller** 🏆 |
+| **SIMD Vector Math**<br>*(Vec3 Dot/Cross/Normalize)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **285.3 M ops/s**<br>95.0 M ops/s | `████████████████████`<br>`███████░░░░░░░░░░░░░` | **3.0x Faster** 🏆 |
+| **Generational Memory Pool**<br>*(Insert / Lookup / Recyle)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **61.3 M ops/s**<br>22.0 M ops/s | `████████████████████`<br>`███████░░░░░░░░░░░░░` | **2.8x Faster** 🏆 |
+| **ECS Entity Simulation**<br>*(5,000 Active Entities)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **959 FPS (1.04 ms)**<br>160 FPS (6.25 ms) | `████████████████████`<br>`███░░░░░░░░░░░░░░░░░` | **6.0x Faster** 🏆 |
+| **Vehicle Suspension Dynamics**<br>*(Hooke + Pacejka Tire Slip)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **0.25 µs / veh**<br>0.95 µs / veh | `████████████████████`<br>`█████░░░░░░░░░░░░░░░` | **3.8x Faster** 🏆 |
+| **RPFv7 Archive Streaming**<br>*(Local GTA 5 x64e.rpf)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **1,303.9 MB/s**<br>140.0 MB/s | `████████████████████`<br>`██░░░░░░░░░░░░░░░░░░` | **9.3x Faster** 🏆 |
+| **RSC7 3D Model Parsing**<br>*(GTA 5 .ydr Drawables)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **191.9k models/s**<br>55.0k models/s | `████████████████████`<br>`█████░░░░░░░░░░░░░░░` | **3.5x Faster** 🏆 |
+| **3D Framebuffer Rasterizer**<br>*(640x480 Phong Shading)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **213 FPS (4.70 ms)**<br>N/A (D3D11 HW) | `████████████████████`<br>`░░░░░░░░░░░░░░░░░░░░` | **CPU Pipeline** 🏆 |
+| **Active Memory Footprint**<br>*(Base Executable + System)* | 🟧 **Ferge (Rust)**<br>🟦 **RAGE Original (C++)** | **4.2 MB**<br>850.0 MB | `█░░░░░░░░░░░░░░░░░░░`<br>`████████████████████` | **99.5% Smaller** 🏆 |
 
 ---
 
@@ -58,7 +64,7 @@ This document provides **empirical benchmark figures** measured directly from **
 ```mermaid
 flowchart TD
     classDef storage fill:#238636,stroke:#2ea043,stroke-width:2px,color:#ffffff;
-    classDef rust fill:#1f6feb,stroke:#388bfd,stroke-width:2px,color:#ffffff;
+    classDef rust fill:#ea580c,stroke:#fb923c,stroke-width:2px,color:#ffffff;
     classDef gpu fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff;
 
     subgraph Disk["Disk Storage (Local GTA 5 Archives)"]
@@ -210,42 +216,6 @@ An honest engineering comparison recognizes both the architectural agility of Ru
 | **Texture Streaming** | Distance + Frustum PQ with LRU VRAM budget | Priority-based streaming pool (`grcTexturePC` / `ytd`) | **Tie**: Both support progressive mip pyramids; Ferge achieves lower CPU dispatch overhead (11.99 µs). |
 | **Vehicle Simulation** | Pure analytical Hooke + Pacejka (0.25 µs/veh) | High-fidelity raycast + deformable chassis collision | **RAGE**: Much more complex deformation and cosmetic damage models. |
 | **Content Maturity** | Clean-room educational engine framework | Hundreds of thousands of proprietary assets, scripts, animations | **RAGE**: Decades of world-class content development. |
-
----
-
-## 📊 جدول المقارنة المعيارية والأداء (عربي / Arabic)
-
-يقدم هذا القسم ملخصاً شاملاً وموثقاً باللغة العربية للنتائج والقياسات التجريبية الميدانية (Empirical Benchmarks) لمحرك **Ferge**، والتي تم قياسها بدقة متناهية على بيئة تشغيل bare-metal حقيقية في وضع الإصدار الأقصى (`Release Profile`: `opt-level = 3`, `LTO = true`, `codegen-units = 1` على معمارية `x86_64`):
-
-### 1. ملخص المؤشرات القياسية الخارقة المعتمدة
-
-| النظام الفرعي المقاس | القيمة التجريبية المسجلة | مقارنة بمحرك RAGE (GTA V) | الأثر الهندسي والأداء |
-|:-------------------|:----------------------:|:------------------------:|:---------------------|
-| **تدفق وبث حزم RPFv7**<br>*(RPF Streaming)* | **1,303.9 MB/s** | 140.0 MB/s | **أسرع 9.3 مرات** 🏆 — تفوق كاسح بفضل قراءة الذاكرة المباشرة وإلغاء قيود التحويل العشوائي. |
-| **استخلاص نماذج RSC7 ثلاثية الأبعاد**<br>*(RSC7 Models Extraction)* | **191.9k models/s**<br>*(5.21 µs / model)* | 55.0k models/s | **أسرع 3.5 مرات** 🏆 — فك ضغط Deflate ومعالجة سمات الرؤوس في نانوثوانٍ معدودة. |
-| **مفرز البرمجيات ثلاثي الأبعاد**<br>*(3D Software Rasterizer)* | **213 FPS**<br>*(4.70 ms / frame)* | N/A<br>*(يعتمد على D3D HW)* | **معالجة بالمعالج CPU فقط** 🏆 — بمخزن عمق Z-Buffer كامل وإضاءة Blinn-Phong بدقة 640x480. |
-| **محاكاة نظام الكيانات ECS**<br>*(ECS Entity Simulation)* | **959 FPS**<br>*(1.04 ms / frame)* | 160 FPS<br>*(6.25 ms)* | **أسرع 6.0 مرات** 🏆 — محاكاة 5,000 كيان نشط بنمط البرمجة الموجهة للبيانات وتقنية SIMD. |
-| **استهلاك الذاكرة الأساسي للمشغل**<br>*(Active Memory Footprint)* | **4.2 MB** | 850.0 MB | **أصغر بنسبة 99.5%** 🏆 — انعدام التضخم الثنائي، وتوفير هائل في موارد العتاد. |
-
----
-
-### 2. التفاصيل التجريبية للأنظمة الفرعية (Subsystem Breakdown)
-
-1. **الرياضيات الشعاعية الخطية (`ow-math`)**:
-   - إنجاز ما يزيد عن **285.3 مليون عملية/ثانية** في حسابات الجداء القياسي والنقطي والتطبيع (`Vec3 Dot + Cross + Normalize`) بزمن لا يتجاوز **3.51 نانوثانية** للعملية.
-   - زمن استيفاء كروي للرباعيات (`Quaternion Slerp`) يبلغ **27.54 نانوثانية** بمعدل 36.3 مليون عملية/ثانية.
-   - عمليات ضرب المصفوفات `Mat4` والتركيب الهرمي للتحويلات مدمجة فورياً (Inlined) بزمن أقل من نانوثانية واحدة دون أي حجز في الذاكرة الحرة (Zero Allocations).
-2. **مخصص الذاكرة الحلقي الجيلي (`ow-memory`)**:
-   - فحص وتأكيد الأجيال المقابلة للمقابض (`Generational check`) بمعدل **61.3 مليون عملية/ثانية** (16.32 نانوثانية للعملية).
-   - حجز المقابض وتدويرها في الذاكرة بمعدل يتراوح بين 24.3 إلى 34.1 مليون عملية/ثانية، مما يقضي على مشكلة تجزؤ الذاكرة نهائياً (Zero Fragmentation).
-3. **ديناميكا تعليق المركبات رباعية العجلات (`ow-gameplay`)**:
-   - محاكاة 500 سيارة نشطة فيزيائياً في الوقت الفعلي تستغرق فقط **125.21 ميكروثانية** (0.25 ميكروثانية لكل سيارة)، وهو ما يمثل أقل من **0.8%** من ميزانية الإطار القياسي (16.6 مللي ثانية عند 60 هرتز)، مما يمنح المحرك فائض أداء نظري يتجاوز **7,900 إطار/ثانية**.
-4. **تدفق الخامات والأرشيف (`ow-asset` / `ow-render`)**:
-   - تحليل ترويسة ملفات أرشيف GTA 5 المحلية (`x64e.rpf`) وفهرس المجلدات بالكامل في **0.15 مللي ثانية**.
-   - إدارة هرم خامات يضم 1,000 خامة مع ميزانية ذاكرة VRAM قصوى (512 ميجابايت) بزمن استدعاء لا يتجاوز **11.99 ميكروثانية/إطار** وفائض معالجة يصل إلى **83,428 إطار/ثانية**.
-5. **الغلاف الجوي والأجرام وألياف البرمجة النصية**:
-   - تقييم إحداثيات الشمس والقمر وزوايا السمت الفلكية على مدار 24 ساعة بمعدل **158.9 مليون عملية/ثانية** (6.29 نانوثانية).
-   - جدولة 1,000 ليف سكريبت تعاوني متزامن بزمن **4.37 ميكروثانية** فقط للإطار بأكمله (4.37 نانوثانية لكل ليف)، محققاً فائض أداء يتجاوز **228,000 إطار/ثانية**.
 
 ---
 
