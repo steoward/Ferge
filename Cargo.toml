@@ -1,9 +1,9 @@
 [package]
-name = "ferrum-rage"
+name = "ferrum"
 version = "0.1.0"
 edition = "2021"
-authors = ["FerrumRAGE Engine Contributors"]
-description = "FerrumRAGE: A high-performance clean-room open-world game engine in Rust inspired by RAGE"
+authors = ["Ferrum Engine Contributors"]
+description = "Ferrum: A high-performance clean-room open-world game engine in Rust"
 
 [workspace]
 members = [

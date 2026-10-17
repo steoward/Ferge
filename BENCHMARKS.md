@@ -1,6 +1,6 @@
-# FerrumRAGE Engine Benchmarks & Fair Comparative Analysis
+# Ferrum Engine Benchmarks & Fair Comparative Analysis
 
-This document provides **empirical benchmark figures** measured directly from **FerrumRAGE** (built with pure Rust), paired with an **honest, objective architectural comparison** against **Subject A** (`GTA5.exe` / Rockstar Advanced Game Engine), complete with **high-contrast vector charts, color-coded legends, and spacious comparative tables**.
+This document provides **empirical benchmark figures** measured directly from **Ferrum** (built with pure Rust), paired with an **honest, objective architectural comparison** against **Subject A** (`GTA5.exe` / Rockstar Advanced Game Engine), complete with **high-contrast vector charts, color-coded legends, and spacious comparative tables**.
 
 ---
 
@@ -8,7 +8,7 @@ This document provides **empirical benchmark figures** measured directly from **
 
 | Swatch / Identifier | Engine | Technology & Implementation | Role in Benchmark |
 |:---:|:---|:---|:---|
-| 🟦 **Vibrant Blue (`#38bdf8`)** | **FerrumRAGE** | Pure Rust (opt-level 3, LTO, SIMD-vectorized) | Our Clean-Room Independent Engine |
+| 🟦 **Vibrant Blue (`#38bdf8`)** | **Ferrum** | Pure Rust (opt-level 3, LTO, SIMD-vectorized) | Our Clean-Room Independent Engine |
 | 🟧 **Vibrant Orange (`#fb923c`)** | **Subject A (RAGE Original)** | C++ (GTA5.exe production runtime) | AAA Commercial Benchmark Baseline |
 
 ---
@@ -16,22 +16,22 @@ This document provides **empirical benchmark figures** measured directly from **
 ## 1. Visual Benchmark Charts & Graphs
 
 ### 1.1 Core Subsystem Throughput Comparison (Higher is Better)
-![Subsystem Processing Throughput](docs/charts/throughput.svg)
+![Subsystem Processing Throughput](./docs/charts/throughput.svg)
 
 ---
 
 ### 1.2 Simulation Frame Rate Headroom (Higher is Better)
-![Simulation Frame Rate Headroom](docs/charts/simulation_fps.svg)
+![Simulation Frame Rate Headroom](./docs/charts/simulation_fps.svg)
 
 ---
 
 ### 1.3 Memory Footprint: Engine Startup & Base Overhead (Lower is Better)
-![Memory Footprint Comparison](docs/charts/memory_footprint.svg)
+![Memory Footprint Comparison](./docs/charts/memory_footprint.svg)
 
 ---
 
 ### 1.4 Progressive Texture Streaming Latency vs Distance LOD (Lower is Better)
-![Progressive Texture Streaming Latency](docs/charts/streaming_latency.svg)
+![Progressive Texture Streaming Latency](./docs/charts/streaming_latency.svg)
 
 ---
 
@@ -39,12 +39,12 @@ This document provides **empirical benchmark figures** measured directly from **
 
 | Subsystem & Benchmark | Engine | Measured Value | Visual Comparison Bar | Performance Ratio |
 |:---|:---|:---|:---|:---:|
-| **SIMD Vector Math**<br>*(Vec3 Dot/Cross/Normalize)* | 🟦 **FerrumRAGE (Rust)**<br>🟧 **RAGE Original (C++)** | **285.3 M ops/s**<br>95.0 M ops/s | `████████████████████`<br>`███████░░░░░░░░░░░░░` | **3.0x Faster** 🏆 |
-| **Generational Memory Pool**<br>*(Insert / Lookup / Recyle)* | 🟦 **FerrumRAGE (Rust)**<br>🟧 **RAGE Original (C++)** | **61.3 M ops/s**<br>22.0 M ops/s | `████████████████████`<br>`███████░░░░░░░░░░░░░` | **2.8x Faster** 🏆 |
-| **ECS Entity Simulation**<br>*(5,000 Active Entities)* | 🟦 **FerrumRAGE (Rust)**<br>🟧 **RAGE Original (C++)** | **494 FPS (2.02 ms)**<br>160 FPS (6.25 ms) | `████████████████████`<br>`██████░░░░░░░░░░░░░░` | **3.1x Faster** 🏆 |
-| **Vehicle Suspension Dynamics**<br>*(Hooke + Pacejka Tire Slip)* | 🟦 **FerrumRAGE (Rust)**<br>🟧 **RAGE Original (C++)** | **0.25 µs / veh**<br>0.95 µs / veh | `████████████████████`<br>`█████░░░░░░░░░░░░░░░` | **3.8x Faster** 🏆 |
-| **RPFv7 Archive Streaming**<br>*(Local GTA 5 x64e.rpf)* | 🟦 **FerrumRAGE (Rust)**<br>🟧 **RAGE Original (C++)** | **240.5 MB/s**<br>140.0 MB/s | `████████████████████`<br>`████████████░░░░░░░░` | **1.7x Faster** 🏆 |
-| **Active Memory Footprint**<br>*(Base Executable + System)* | 🟦 **FerrumRAGE (Rust)**<br>🟧 **RAGE Original (C++)** | **4.2 MB**<br>850.0 MB | `█░░░░░░░░░░░░░░░░░░░`<br>`████████████████████` | **99.5% Smaller** 🏆 |
+| **SIMD Vector Math**<br>*(Vec3 Dot/Cross/Normalize)* | 🟦 **Ferrum (Rust)**<br>🟧 **RAGE Original (C++)** | **285.3 M ops/s**<br>95.0 M ops/s | `████████████████████`<br>`███████░░░░░░░░░░░░░` | **3.0x Faster** 🏆 |
+| **Generational Memory Pool**<br>*(Insert / Lookup / Recyle)* | 🟦 **Ferrum (Rust)**<br>🟧 **RAGE Original (C++)** | **61.3 M ops/s**<br>22.0 M ops/s | `████████████████████`<br>`███████░░░░░░░░░░░░░` | **2.8x Faster** 🏆 |
+| **ECS Entity Simulation**<br>*(5,000 Active Entities)* | 🟦 **Ferrum (Rust)**<br>🟧 **RAGE Original (C++)** | **494 FPS (2.02 ms)**<br>160 FPS (6.25 ms) | `████████████████████`<br>`██████░░░░░░░░░░░░░░` | **3.1x Faster** 🏆 |
+| **Vehicle Suspension Dynamics**<br>*(Hooke + Pacejka Tire Slip)* | 🟦 **Ferrum (Rust)**<br>🟧 **RAGE Original (C++)** | **0.25 µs / veh**<br>0.95 µs / veh | `████████████████████`<br>`█████░░░░░░░░░░░░░░░` | **3.8x Faster** 🏆 |
+| **RPFv7 Archive Streaming**<br>*(Local GTA 5 x64e.rpf)* | 🟦 **Ferrum (Rust)**<br>🟧 **RAGE Original (C++)** | **240.5 MB/s**<br>140.0 MB/s | `████████████████████`<br>`████████████░░░░░░░░` | **1.7x Faster** 🏆 |
+| **Active Memory Footprint**<br>*(Base Executable + System)* | 🟦 **Ferrum (Rust)**<br>🟧 **RAGE Original (C++)** | **4.2 MB**<br>850.0 MB | `█░░░░░░░░░░░░░░░░░░░`<br>`████████████████████` | **99.5% Smaller** 🏆 |
 
 ---
 
@@ -62,7 +62,7 @@ flowchart TD
         TOC["Table of Contents (0.15 ms parse)"]:::storage
     end
 
-    subgraph FerrumRAGE["FerrumRAGE Core Pipeline (Rust)"]
+    subgraph Ferrum["Ferrum Core Pipeline (Rust)"]
         Reader["Clean-Room RPF7 Reader"]:::rust
         PQ["Distance and Frustum Priority Queue"]:::rust
         Decomp["MinizOxide Deflate Stream"]:::rust
@@ -109,7 +109,7 @@ sequenceDiagram
 
 ---
 
-## 4. Empirical Benchmark Figures (FerrumRAGE v0.1.0)
+## 4. Empirical Benchmark Figures (Ferrum v0.1.0)
 
 All benchmarks were compiled in **Release mode** (`opt-level = 3`, `LTO = true`, `codegen-units = 1`) on `x86_64-pc-windows-msvc` and executed on bare metal native hardware.
 
@@ -181,17 +181,17 @@ Empirically audited against local GTA 5 game installation (`D:\Games\Grand Theft
 
 ---
 
-## 5. Fair & Honest Comparative Analysis: FerrumRAGE vs RAGE (GTA 5)
+## 5. Fair & Honest Comparative Analysis: Ferrum vs RAGE (GTA 5)
 
 An honest engineering comparison recognizes both the architectural agility of Rust and the production maturity of Rockstar's 15+ years of engine development.
 
-| Architectural Feature | FerrumRAGE (Rust) | Subject A: RAGE Original (C++) | Analysis & Winner |
+| Architectural Feature | Ferrum (Rust) | Subject A: RAGE Original (C++) | Analysis & Winner |
 |:---|:---|:---|:---|
-| **Language & Safety** | Pure Rust (`#![forbid(unsafe_code)]` where applicable) | C++ (C++03/11 dialled with manual memory management) | **FerrumRAGE**: 0 data races, compile-time memory safety. |
-| **Modular Architecture** | 13 independent crates with clean boundaries | Single monolithic 54.4 MB PE binary executable | **FerrumRAGE**: Hot-reloading, isolated unit testing, easy maintenance. |
-| **Memory Footprint** | ~4.2 MB base (57.9 MB with 1k textures) | ~850 MB startup, 2.5 GB in-game | **FerrumRAGE**: 95% smaller memory footprint. |
-| **Startup / Init Time** | Sub-millisecond (< 5 ms) | 30–60 seconds disk unpacking and shader compilation | **FerrumRAGE**: Instant debugging turnaround. |
-| **Texture Streaming** | Distance + Frustum PQ with LRU VRAM budget | Priority-based streaming pool (`grcTexturePC` / `ytd`) | **Tie**: Both support progressive mip pyramids; FerrumRAGE achieves lower CPU dispatch overhead (11.99 µs). |
+| **Language & Safety** | Pure Rust (`#![forbid(unsafe_code)]` where applicable) | C++ (C++03/11 dialled with manual memory management) | **Ferrum**: 0 data races, compile-time memory safety. |
+| **Modular Architecture** | 13 independent crates with clean boundaries | Single monolithic 54.4 MB PE binary executable | **Ferrum**: Hot-reloading, isolated unit testing, easy maintenance. |
+| **Memory Footprint** | ~4.2 MB base (57.9 MB with 1k textures) | ~850 MB startup, 2.5 GB in-game | **Ferrum**: 95% smaller memory footprint. |
+| **Startup / Init Time** | Sub-millisecond (< 5 ms) | 30–60 seconds disk unpacking and shader compilation | **Ferrum**: Instant debugging turnaround. |
+| **Texture Streaming** | Distance + Frustum PQ with LRU VRAM budget | Priority-based streaming pool (`grcTexturePC` / `ytd`) | **Tie**: Both support progressive mip pyramids; Ferrum achieves lower CPU dispatch overhead (11.99 µs). |
 | **Vehicle Simulation** | Pure analytical Hooke + Pacejka (0.25 µs/veh) | High-fidelity raycast + deformable chassis collision | **RAGE**: Much more complex deformation and cosmetic damage models. |
 | **Content Maturity** | Clean-room educational engine framework | Hundreds of thousands of proprietary assets, scripts, animations | **RAGE**: Decades of world-class content development. |
 
@@ -199,7 +199,7 @@ An honest engineering comparison recognizes both the architectural agility of Ru
 
 ## 6. Strict Clean-Room Legal Boundary
 
-FerrumRAGE strictly follows the **OpenMW / ScummVM / OpenRCT2 clean-room paradigm**:
+Ferrum strictly follows the **OpenMW / ScummVM / OpenRCT2 clean-room paradigm**:
 1. **Zero Copyrighted Assets in Git**: The repository contains **only original source code**. No `.rpf` files, proprietary textures, audio, models, or decompiled Rockstar source code are stored or committed.
 2. **On-the-Fly Local Reading**: The engine reads user-owned local game files on the user's hard drive (`D:\Games\Grand Theft Auto V`) during runtime purely for educational and performance benchmarking.
 3. **Headless / CI Compatibility**: When run on machines without GTA 5 installed, the engine automatically uses an integrated synthetic RPF container generator, ensuring 100% test reproducibility.

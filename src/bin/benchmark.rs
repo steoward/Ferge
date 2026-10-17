@@ -55,8 +55,8 @@ fn print_result(label: &str, ops: usize, elapsed_secs: f64) {
 
 fn main() {
     println!("╔══════════════════════════════════════════════════════════╗");
-    println!("║       FerrumRAGE / OpenWorldEngine BENCHMARK SUITE       ║");
-    println!("║             High-Performance Subsystem Auditing          ║");
+    println!("║             Ferrum Engine BENCHMARK SUITE                ║");
+    println!("║          High-Performance Subsystem Auditing             ║");
     println!("╚══════════════════════════════════════════════════════════╝");
     println!("Build Profile: Release (opt-level=3, LTO=true, codegen-units=1)");
     println!("Hardware Target: x86_64 Native");
