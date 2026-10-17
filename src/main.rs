@@ -1,5 +1,6 @@
+use std::path::Path;
 use ow_core::engine::{Engine, EngineConfig};
-use ow_math::{Quat, Transform, Vec3};
+use ow_math::{Mat4, Quat, Transform, Vec3, Vec4};
 use ow_ecs::component::Position;
 use ow_gameplay::character::CharacterController;
 use ow_gameplay::handling::{DrivetrainType, FourWheelVehicle, HandlingConfig};
@@ -14,10 +15,17 @@ use ow_world::population::{PopulationConfig, PopulationManager, RoadNetwork};
 use ow_world::streaming::{
     SectorId, StreamingBudget, StreamingConfig, StreamingManager, WorldChunk,
 };
+use ow_asset::rsc7::{create_synthetic_rsc7_drawable, Rsc7Drawable};
+use ow_render::mesh::{Mesh, Vertex};
+use ow_render::renderer::{Renderer, RenderConfig as OwRenderConfig};
+use ow_render::camera::Camera;
+use ow_render::light::{Light, LightType};
+use ow_render::rasterizer::{SoftwareRasterPass, ShadingModel};
+use ow_render::pass::RenderPass;
 
 fn main() {
     println!("============================================================");
-    println!("          FerrumRAGE - RAGE CLEAN-ROOM RUNTIME (RUST)       ");
+    println!("                  Ferge (Fe Rust Game Engine)               ");
     println!("============================================================");
     println!("Architecture: Composable 13-Crate Data-Oriented Engine");
     println!("Features: Streaming, 4-Wheel Raycast Physics, Atmosphere,");
@@ -27,7 +35,7 @@ fn main() {
     let config = EngineConfig {
         window_width: 1920,
         window_height: 1080,
-        window_title: "FerrumRAGE (RAGE Clean-Room in Rust)".to_string(),
+        window_title: "Ferge Engine (Fe Rust Game Engine - Clean-Room Open-World Engine)".to_string(),
         vsync: true,
         target_fps: 60,
         enable_physics: true,
@@ -63,6 +71,7 @@ fn main() {
     // Run deep subsystem verification
     verify_gameplay_systems();
     verify_open_world_systems();
+    demonstrate_3d_pipeline();
 
     println!("Starting engine loop (10 frames full simulation)...");
     for _ in 0..10 {
@@ -72,7 +81,7 @@ fn main() {
     println!("FPS: {:.1}", engine.get_fps());
     println!();
 
-    println!("FerrumRAGE execution completed successfully.");
+    println!("Ferge (Fe Rust Game Engine) execution completed successfully.");
 }
 
 fn verify_gameplay_systems() {
@@ -233,5 +242,96 @@ fn verify_open_world_systems() {
         scripts.context.get_global("MISSION_STEP"),
         scripts.context.triggered_events.last()
     );
+    println!();
+}
+
+fn demonstrate_3d_pipeline() {
+    println!("--- 3D RSC7 Model Decoding & Software Rasterizer Pipeline ---");
+
+    // 1. Synthesize and decode a GTA 5 3D Drawable (.ydr)
+    let car_bytes = create_synthetic_rsc7_drawable("adder_chassis.ydr", "car");
+    let drawable = Rsc7Drawable::from_bytes(&car_bytes).expect("Failed to parse RSC7 car drawable");
+
+    println!(
+        "RSC7 Drawable Loaded: {} | AABB min=({:.1}, {:.1}, {:.1}) max=({:.1}, {:.1}, {:.1})",
+        drawable.name,
+        drawable.bounding_box_min.x, drawable.bounding_box_min.y, drawable.bounding_box_min.z,
+        drawable.bounding_box_max.x, drawable.bounding_box_max.y, drawable.bounding_box_max.z
+    );
+
+    // 2. Convert to Ferge Render Mesh
+    let mut all_vertices = Vec::new();
+    let mut all_indices = Vec::new();
+    if let Some(lod) = &drawable.lod_high {
+        for geom in &lod.submeshes {
+            let base_vertex = all_vertices.len() as u32;
+            for v in geom.to_vertex_buffer() {
+                all_vertices.push(
+                    Vertex::new(v.position)
+                        .with_normal(v.normal)
+                        .with_uv(v.uv0)
+                        .with_color(v.color)
+                );
+            }
+            for idx in geom.to_indices() {
+                all_indices.push(base_vertex + idx);
+            }
+        }
+    }
+    let mesh = Mesh::new(&drawable.name)
+        .with_vertices(all_vertices)
+        .with_indices(all_indices);
+    println!(
+        "  Mesh Transformed: {} vertices | {} triangles in index buffer",
+        mesh.vertex_count(),
+        mesh.triangle_count()
+    );
+
+    // 3. Setup Renderer and Camera
+    let width = 640;
+    let height = 480;
+    let config = OwRenderConfig {
+        width,
+        height,
+        clear_color: Vec4::new(0.08, 0.12, 0.18, 1.0),
+        ..Default::default()
+    };
+    let renderer = Renderer::new(config);
+
+    let mut camera = Camera::new_perspective(
+        Vec3::new(0.0, 2.5, 6.0),
+        60.0f32.to_radians(),
+        0.1,
+        100.0,
+    );
+    camera.view_matrix = Mat4::look_at(Vec3::new(0.0, 2.5, 6.0), Vec3::new(0.0, 0.5, 0.0), Vec3::UP);
+    camera.projection_matrix = Mat4::perspective(60.0f32.to_radians(), width as f32 / height as f32, 0.1, 100.0);
+    camera.view_projection_matrix = camera.projection_matrix * camera.view_matrix;
+    renderer.add_camera(camera);
+
+    let sun_light = Light::new("Sun", LightType::Directional)
+        .with_direction(Vec3::new(0.6, -1.0, 0.4))
+        .with_color(Vec3::new(1.0, 0.95, 0.85));
+    renderer.add_light(sun_light);
+
+    let _mesh_id = renderer.register_mesh(mesh);
+
+    // 4. Execute SoftwareRasterPass and render frame
+    let pass = SoftwareRasterPass::new(width, height);
+    pass.rasterizer().write().shading_model = ShadingModel::Phong;
+    pass.execute(&renderer);
+
+    let stats = pass.rasterizer().read().stats();
+    println!(
+        "  Software Rasterizer: rendered {} triangles | processed {} fragments | passed Z-test {}",
+        stats.triangles_rendered, stats.fragments_processed, stats.fragments_passed
+    );
+
+    // 5. Export rendered frame to BMP
+    let _ = std::fs::create_dir_all("docs");
+    let output_bmp = Path::new("docs/render_frame.bmp");
+    if let Ok(()) = pass.export_frame_bmp(output_bmp) {
+        println!("  Rendered Frame Exported: {} (640x480 24-bit BMP)", output_bmp.display());
+    }
     println!();
 }

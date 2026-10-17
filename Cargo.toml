@@ -1,9 +1,9 @@
 [package]
-name = "ferrum"
+name = "ferge"
 version = "0.1.0"
 edition = "2021"
-authors = ["Ferrum Engine Contributors"]
-description = "Ferrum: A high-performance clean-room open-world game engine in Rust"
+authors = ["Ferge Engine Contributors"]
+description = "Ferge (Fe Rust Game Engine): A high-performance clean-room open-world game engine in Rust"
 
 [workspace]
 members = [

@@ -562,7 +562,7 @@ mod tests {
 
     #[test]
     fn test_synthetic_rpf_generation_and_reading() {
-        let raw_data1 = b"FerrumRAGE High-Throughput Texture Streaming Test Data 001";
+        let raw_data1 = b"Ferge High-Throughput Texture Streaming Test Data 001";
         let raw_data2 = b"Procedural Mipmap Level Pyramidal Layer Binary Blob 002";
 
         let archive_bytes = create_synthetic_rpf(&[

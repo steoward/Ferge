@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 450" width="100%" height="100%" style="background:#0d1117; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; border-radius:12px; border:1px solid #30363d;">
-<defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="100%" height="100%" style="background:#0d1117; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; border-radius:12px; border:1px solid #30363d;">
+    <defs>
         <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.45"/>
             <stop offset="100%" stop-color="#0284c7" stop-opacity="0.0"/>
@@ -8,41 +8,62 @@
             <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#38bdf8" flood-opacity="0.8"/>
         </filter>
     </defs>
-<text x="75" y="36" fill="#f0f6fc" font-size="19" font-weight="700">Progressive Mipmap Streaming Latency by Distance LOD</text>
-<text x="75" y="58" fill="#8b949e" font-size="12.5">Time to stream and bind texture mip levels at 120 km/h vehicle speed (Lower is Better)</text>
-<circle cx="580" cy="30" r="5" fill="#38bdf8"/>
-<text x="593" y="35" fill="#e6edf3" font-size="12.5" font-weight="600">Ferrum Async Streamer</text>
-<line x1="75" y1="370.0" x2="805" y2="370.0" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
-<text x="65" y="374.0" fill="#8b949e" font-size="11" text-anchor="end">0.0 ms</text>
-<line x1="75" y1="298.8" x2="805" y2="298.8" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
-<text x="65" y="302.8" fill="#8b949e" font-size="11" text-anchor="end">5.0 ms</text>
-<line x1="75" y1="227.5" x2="805" y2="227.5" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
-<text x="65" y="231.5" fill="#8b949e" font-size="11" text-anchor="end">10.0 ms</text>
-<line x1="75" y1="156.2" x2="805" y2="156.2" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
-<text x="65" y="160.2" fill="#8b949e" font-size="11" text-anchor="end">15.0 ms</text>
-<line x1="75" y1="85.0" x2="805" y2="85.0" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
-<text x="65" y="89.0" fill="#8b949e" font-size="11" text-anchor="end">20.0 ms</text>
-<line x1="75" y1="370" x2="805" y2="370" stroke="#30363d" stroke-width="1.5"/>
-<path d="M 75.0,370 L 75.0,150.0 L 257.5,281.6 L 440.0,339.4 L 622.5,363.6 L 805.0,369.3 L 805.0,370 Z" fill="url(#areaGrad)"/>
-<path d="M 75.0,150.0 L 257.5,281.6 L 440.0,339.4 L 622.5,363.6 L 805.0,369.3" fill="none" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="75.0" cy="150.0" r="6.5" fill="#0d1117" stroke="#38bdf8" stroke-width="3" filter="url(#dotGlow)"/>
-<text x="75.0" y="138.0" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">15.44 ms</text>
-<text x="75.0" y="394" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">Close (Under 15m)</text>
-<text x="75.0" y="412" fill="#8b949e" font-size="10.5" font-weight="500" text-anchor="middle">Mip 0 (4K)</text>
-<circle cx="257.5" cy="281.6" r="6.5" fill="#0d1117" stroke="#38bdf8" stroke-width="3" filter="url(#dotGlow)"/>
-<text x="257.5" y="269.6" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">6.20 ms</text>
-<text x="257.5" y="394" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">Near (15-40m)</text>
-<text x="257.5" y="412" fill="#8b949e" font-size="10.5" font-weight="500" text-anchor="middle">Mip 1 (2K)</text>
-<circle cx="440.0" cy="339.4" r="6.5" fill="#0d1117" stroke="#38bdf8" stroke-width="3" filter="url(#dotGlow)"/>
-<text x="440.0" y="327.4" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">2.15 ms</text>
-<text x="440.0" y="394" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">Mid (40-100m)</text>
-<text x="440.0" y="412" fill="#8b949e" font-size="10.5" font-weight="500" text-anchor="middle">Mip 2 (1K)</text>
-<circle cx="622.5" cy="363.6" r="6.5" fill="#0d1117" stroke="#38bdf8" stroke-width="3" filter="url(#dotGlow)"/>
-<text x="622.5" y="351.6" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">0.45 ms</text>
-<text x="622.5" y="394" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">Far (100-250m)</text>
-<text x="622.5" y="412" fill="#8b949e" font-size="10.5" font-weight="500" text-anchor="middle">Mip 3 (512px)</text>
-<circle cx="805.0" cy="369.3" r="6.5" fill="#0d1117" stroke="#38bdf8" stroke-width="3" filter="url(#dotGlow)"/>
-<text x="805.0" y="357.3" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">0.05 ms</text>
-<text x="805.0" y="394" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">Horizon (Over 250m)</text>
-<text x="805.0" y="412" fill="#8b949e" font-size="10.5" font-weight="500" text-anchor="middle">Mip 4 (Ambient)</text>
+
+    <!-- Header & Titles -->
+    <text x="60" y="32" fill="#f0f6fc" font-size="18" font-weight="700">Progressive Mipmap Streaming Latency by Distance LOD</text>
+    <text x="60" y="54" fill="#8b949e" font-size="12.5">Time to stream and bind texture mip levels at 120 km/h vehicle speed (Lower is Better)</text>
+
+    <!-- Dedicated Legend Row (Independent from Title) -->
+    <circle cx="67" cy="77" r="5" fill="#38bdf8"/>
+    <text x="82" y="82" fill="#e6edf3" font-size="12.5" font-weight="600">Ferge Async Streamer (Rust)</text>
+
+    <!-- Grid Lines & Ticks -->
+    <line x1="60" y1="370.0" x2="850" y2="370.0" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="50" y="374.0" fill="#8b949e" font-size="11" text-anchor="end">0.0 ms</text>
+    <line x1="60" y1="305.0" x2="850" y2="305.0" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="50" y="309.0" fill="#8b949e" font-size="11" text-anchor="end">5.0 ms</text>
+    <line x1="60" y1="240.0" x2="850" y2="240.0" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="50" y="244.0" fill="#8b949e" font-size="11" text-anchor="end">10.0 ms</text>
+    <line x1="60" y1="175.0" x2="850" y2="175.0" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="50" y="179.0" fill="#8b949e" font-size="11" text-anchor="end">15.0 ms</text>
+    <line x1="60" y1="110.0" x2="850" y2="110.0" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="50" y="114.0" fill="#8b949e" font-size="11" text-anchor="end">20.0 ms</text>
+
+    <line x1="60" y1="370" x2="850" y2="370" stroke="#30363d" stroke-width="1.5"/>
+
+    <!-- Gradient Fill Area -->
+    <path d="M 90.0,370 L 90.0,169.3 L 270.0,289.4 L 450.0,342.1 L 630.0,364.2 L 810.0,369.4 L 810.0,370 Z" fill="url(#areaGrad)"/>
+
+    <!-- Polyline Connecting Points -->
+    <path d="M 90.0,169.3 L 270.0,289.4 L 450.0,342.1 L 630.0,364.2 L 810.0,369.4" fill="none" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Point 1: Close (<15m) -->
+    <circle cx="90.0" cy="169.3" r="6.5" fill="#0d1117" stroke="#38bdf8" stroke-width="3" filter="url(#dotGlow)"/>
+    <text x="90.0" y="157.3" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">15.44 ms</text>
+    <text x="90.0" y="394" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">Close (Under 15m)</text>
+    <text x="90.0" y="412" fill="#8b949e" font-size="10.5" font-weight="500" text-anchor="middle">Mip 0 (4K)</text>
+
+    <!-- Point 2: Near (15-40m) -->
+    <circle cx="270.0" cy="289.4" r="6.5" fill="#0d1117" stroke="#38bdf8" stroke-width="3" filter="url(#dotGlow)"/>
+    <text x="270.0" y="277.4" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">6.20 ms</text>
+    <text x="270.0" y="394" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">Near (15-40m)</text>
+    <text x="270.0" y="412" fill="#8b949e" font-size="10.5" font-weight="500" text-anchor="middle">Mip 1 (2K)</text>
+
+    <!-- Point 3: Mid (40-100m) -->
+    <circle cx="450.0" cy="342.1" r="6.5" fill="#0d1117" stroke="#38bdf8" stroke-width="3" filter="url(#dotGlow)"/>
+    <text x="450.0" y="330.1" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">2.15 ms</text>
+    <text x="450.0" y="394" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">Mid (40-100m)</text>
+    <text x="450.0" y="412" fill="#8b949e" font-size="10.5" font-weight="500" text-anchor="middle">Mip 2 (1K)</text>
+
+    <!-- Point 4: Far (100-250m) -->
+    <circle cx="630.0" cy="364.2" r="6.5" fill="#0d1117" stroke="#38bdf8" stroke-width="3" filter="url(#dotGlow)"/>
+    <text x="630.0" y="352.2" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">0.45 ms</text>
+    <text x="630.0" y="394" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">Far (100-250m)</text>
+    <text x="630.0" y="412" fill="#8b949e" font-size="10.5" font-weight="500" text-anchor="middle">Mip 3 (512px)</text>
+
+    <!-- Point 5: Horizon (>250m) -->
+    <circle cx="810.0" cy="369.4" r="6.5" fill="#0d1117" stroke="#38bdf8" stroke-width="3" filter="url(#dotGlow)"/>
+    <text x="810.0" y="357.4" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">0.05 ms</text>
+    <text x="810.0" y="394" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">Horizon (Over 250m)</text>
+    <text x="810.0" y="412" fill="#8b949e" font-size="10.5" font-weight="500" text-anchor="middle">Mip 4 (Ambient)</text>
 </svg>

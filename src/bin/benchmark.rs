@@ -15,6 +15,9 @@ use ow_world::streaming::{SectorId, StreamingBudget, StreamingConfig, StreamingM
 use ow_world::environment::EnvironmentSystem;
 use ow_world::camera::OrbitCameraRig;
 use ow_asset::rpf::{RpfArchive, create_synthetic_rpf};
+use ow_asset::rsc7::{create_synthetic_rsc7_drawable, Rsc7Drawable};
+use ow_render::mesh::Vertex;
+use ow_render::rasterizer::{FrameBuffer, Rasterizer, ShadingModel};
 use ow_render::texture_streamer::{TextureStreamer, StreamableTexture, TextureId, TextureFormat};
 
 struct PositionIntegrator;
@@ -55,7 +58,7 @@ fn print_result(label: &str, ops: usize, elapsed_secs: f64) {
 
 fn main() {
     println!("╔══════════════════════════════════════════════════════════╗");
-    println!("║             Ferrum Engine BENCHMARK SUITE                ║");
+    println!("║               Ferge Engine BENCHMARK SUITE               ║");
     println!("║          High-Performance Subsystem Auditing             ║");
     println!("╚══════════════════════════════════════════════════════════╝");
     println!("Build Profile: Release (opt-level=3, LTO=true, codegen-units=1)");
@@ -70,6 +73,8 @@ fn main() {
     bench_atmosphere();
     bench_scripts();
     bench_texture_streaming();
+    bench_rsc7();
+    bench_rasterizer();
 
     println!("\nAll benchmark suites completed successfully.\n");
 }
@@ -481,5 +486,93 @@ fn bench_texture_streaming() {
         stats.cumulative_bytes_streamed as f64 / (1024.0 * 1024.0),
         (stats.cumulative_bytes_streamed as f64 / (1024.0 * 1024.0)) / el,
         stats.mips_evicted_this_frame
+    );
+}
+
+fn bench_rsc7() {
+    bench_section("GTA 5 RSC7 Resource Parsing & 3D Mesh Extraction (ow-asset)");
+
+    let car_bytes = create_synthetic_rsc7_drawable("adder_chassis.ydr", "car");
+    let n = 20_000;
+    let t0 = Instant::now();
+    let mut total_verts = 0;
+    let mut total_tris = 0;
+
+    for _ in 0..n {
+        if let Ok(drawable) = Rsc7Drawable::from_bytes(&car_bytes) {
+            if let Some(lod) = &drawable.lod_high {
+                for geom in &lod.submeshes {
+                    total_verts += geom.vertex_count as usize;
+                    total_tris += geom.index_count as usize / 3;
+                }
+            }
+        }
+    }
+    let el = t0.elapsed().as_secs_f64();
+    let total_bytes_mb = (car_bytes.len() * n) as f64 / (1024.0 * 1024.0);
+    let throughput = total_bytes_mb / el;
+
+    println!(
+        "  {:>4} RSC7 3D Drawables parsed : {:>8.2} ms | {:>10.0} drawables/sec | {:>7.1} MB/s throughput",
+        n,
+        el * 1000.0,
+        n as f64 / el,
+        throughput
+    );
+    println!(
+        "  Extracted Geometry Metrics   : {} vertices | {} triangles verified per model",
+        total_verts / n,
+        total_tris / n
+    );
+}
+
+fn bench_rasterizer() {
+    bench_section("3D Software Rasterization & Framebuffer Pipeline (ow-render)");
+
+    let width = 640;
+    let height = 480;
+    let mut fb = FrameBuffer::new(width, height);
+    let mut rasterizer = Rasterizer::new();
+    rasterizer.shading_model = ShadingModel::Phong;
+
+    let car_bytes = create_synthetic_rsc7_drawable("adder.ydr", "car");
+    let drawable = Rsc7Drawable::from_bytes(&car_bytes).unwrap();
+    let geom = &drawable.lod_high.as_ref().unwrap().submeshes[0];
+    let vertices: Vec<Vertex> = geom.to_vertex_buffer().into_iter().map(|v| {
+        Vertex::new(v.position).with_normal(v.normal).with_uv(v.uv0).with_color(v.color)
+    }).collect();
+    let indices = geom.to_indices();
+
+    let proj = Mat4::perspective(60.0f32.to_radians(), width as f32 / height as f32, 0.1, 100.0);
+    let view = Mat4::look_at(Vec3::new(0.0, 2.5, 6.0), Vec3::new(0.0, 0.5, 0.0), Vec3::UP);
+    let model = Mat4::identity();
+    let light_dir = Vec3::new(0.6, -1.0, 0.4).normalize();
+    let light_col = Vec3::new(1.0, 0.95, 0.85);
+
+    let frames = 600;
+    let t0 = Instant::now();
+    for _ in 0..frames {
+        fb.clear(0xFF101820, 1.0);
+        rasterizer.draw_mesh(&mut fb, &vertices, &indices, &model, &view, &proj, light_dir, light_col);
+    }
+    let el = t0.elapsed().as_secs_f64();
+    let stats = rasterizer.stats();
+    let total_tris = (indices.len() / 3) * frames;
+    let frame_ms = (el / frames as f64) * 1000.0;
+    let fps = frames as f64 / el;
+    let mtris_per_sec = (total_tris as f64 / el) / 1_000_000.0;
+    let mpx_per_sec = (stats.fragments_processed as f64 / el) / 1_000_000.0;
+
+    println!(
+        "  640x480 Phong 3D Render Loop : {:>6.2} ms/frame | {:>7.0} FPS | {:>6.2} Mtris/sec",
+        frame_ms,
+        fps,
+        mtris_per_sec
+    );
+    println!(
+        "  Rasterizer Pixel Fill Rate   : {:>6.1} Mpixels/sec | {} frags processed | {} depth passed",
+        mpx_per_sec,
+        stats.fragments_processed,
+        stats.fragments_passed
     );
 }

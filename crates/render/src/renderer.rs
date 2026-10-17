@@ -101,6 +101,10 @@ impl Renderer {
         self.meshes.read().get(&id).cloned()
     }
 
+    pub fn get_all_meshes(&self) -> Vec<Mesh> {
+        self.meshes.read().values().cloned().collect()
+    }
+
     pub fn register_material(&self, material: Material) -> u32 {
         let mut next_id = self.next_material_id.write();
         let id = *next_id;
@@ -127,6 +131,10 @@ impl Renderer {
 
     pub fn get_light(&self, index: usize) -> Option<Light> {
         self.lights.read().get(index).cloned()
+    }
+
+    pub fn get_all_lights(&self) -> Vec<Light> {
+        self.lights.read().clone()
     }
 
     pub fn add_render_pass(&self, pass: Box<dyn RenderPass>) {

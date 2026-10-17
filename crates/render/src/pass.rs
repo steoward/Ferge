@@ -8,6 +8,7 @@ pub enum RenderPassType {
     PostProcess,
     UI,
     Debug,
+    SoftwareRaster,
 }
 
 pub trait RenderPass: Send + Sync {

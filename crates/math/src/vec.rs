@@ -196,6 +196,18 @@ impl std::ops::Add for Vec4 {
     }
 }
 
+impl std::ops::Sub for Vec4 {
+    type Output = Self;
+    fn sub(self, other: Self) -> Self {
+        Self::new(
+            self.x - other.x,
+            self.y - other.y,
+            self.z - other.z,
+            self.w - other.w,
+        )
+    }
+}
+
 impl std::ops::Mul<f32> for Vec4 {
     type Output = Self;
     fn mul(self, scalar: f32) -> Self {

@@ -16,6 +16,7 @@ pub mod json;
 pub mod model;
 pub mod loader;
 pub mod rpf;
+pub mod rsc7;
 
 pub use glb::{GlbHeader, GlbChunk, read_glb_chunks};
 pub use json::{JsonValue, parse_json, JsonError};
@@ -30,4 +31,12 @@ pub use glb::GlbError;
 pub use rpf::{
     RpfArchive, RpfEntry, RpfDirectoryEntry, RpfBinaryFileEntry, RpfResourceFileEntry,
     RpfEncryption, RpfError, create_synthetic_rpf, RPF7_MAGIC, RPF7_SECTOR_SIZE,
+};
+pub use rsc7::{
+    Rsc7Header, Rsc7VirtualAllocation, Rsc7PrimitiveType, Rsc7VertexChannelType,
+    Rsc7VertexChannelSemantic, Rsc7VertexChannel, Rsc7VertexDeclaration,
+    Rsc7Vertex, Rsc7Geometry, Rsc7Mesh, Rsc7LodModel, Rsc7Shader, Rsc7ShaderGroup,
+    Rsc7Drawable, Rsc7Error, Rsc7ArchiveExtractor,
+    create_synthetic_rsc7_drawable,
+    RSC7_MAGIC, RSC7_ALT_MAGIC, RSC7_VERSION_DRAWABLE, RSC7_SYSTEM_BASE, RSC7_GRAPHICS_BASE,
 };
