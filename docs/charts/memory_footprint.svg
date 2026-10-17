@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 420" width="100%" height="100%" style="background:#0d1117; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; border-radius:12px; border:1px solid #30363d;">
+<defs>
+        <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#38bdf8"/>
+            <stop offset="100%" stop-color="#0284c7"/>
+        </linearGradient>
+        <linearGradient id="orangeGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fb923c"/>
+            <stop offset="100%" stop-color="#ea580c"/>
+        </linearGradient>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+        </filter>
+    </defs>
+<text x="80" y="36" fill="#f0f6fc" font-size="19" font-weight="700">Executable & Active System RAM Footprint (Lower is Better)</text>
+<text x="80" y="58" fill="#8b949e" font-size="12.5">Memory overhead comparison between pure modular Rust and monolithic C++</text>
+<rect x="435" y="23" width="14" height="14" rx="3" fill="#38bdf8"/>
+<text x="455" y="35" fill="#e6edf3" font-size="12.5" font-weight="600">FerrumRAGE (Rust)</text>
+<rect x="620" y="23" width="14" height="14" rx="3" fill="#fb923c"/>
+<text x="640" y="35" fill="#e6edf3" font-size="12.5" font-weight="600">RAGE (GTA 5 C++)</text>
+<line x1="80" y1="360.0" x2="785" y2="360.0" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="70" y="364.0" fill="#8b949e" font-size="11" text-anchor="end">0 MB</text>
+<line x1="80" y1="291.2" x2="785" y2="291.2" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="70" y="295.2" fill="#8b949e" font-size="11" text-anchor="end">700 MB</text>
+<line x1="80" y1="222.5" x2="785" y2="222.5" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="70" y="226.5" fill="#8b949e" font-size="11" text-anchor="end">1400 MB</text>
+<line x1="80" y1="153.8" x2="785" y2="153.8" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="70" y="157.8" fill="#8b949e" font-size="11" text-anchor="end">2100 MB</text>
+<line x1="80" y1="85.0" x2="785" y2="85.0" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="70" y="89.0" fill="#8b949e" font-size="11" text-anchor="end">2800 MB</text>
+<line x1="80" y1="360" x2="785" y2="360" stroke="#30363d" stroke-width="1.5"/>
+<rect x="141.1" y="356.0" width="54.0" height="4.0" rx="5" fill="url(#blueGrad)" filter="url(#glow)"/>
+<text x="168.1" y="348.0" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">4.2 MB</text>
+<text x="168.1" y="382" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">FerrumRAGE (Base)</text>
+<rect x="130.1" y="392" width="76" height="17" rx="8.5" fill="#1f6feb" fill-opacity="0.2" stroke="#58a6ff" stroke-width="0.8"/>
+<text x="168.1" y="404" fill="#58a6ff" font-size="10" font-weight="600" text-anchor="middle">Ultra Compact</text>
+<rect x="317.4" y="354.3" width="54.0" height="5.7" rx="5" fill="url(#blueGrad)" filter="url(#glow)"/>
+<text x="344.4" y="346.3" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">57.9 MB</text>
+<text x="344.4" y="382" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">FerrumRAGE (+1k Textures)</text>
+<rect x="306.4" y="392" width="76" height="17" rx="8.5" fill="#1f6feb" fill-opacity="0.2" stroke="#58a6ff" stroke-width="0.8"/>
+<text x="344.4" y="404" fill="#58a6ff" font-size="10" font-weight="600" text-anchor="middle">Active VRAM</text>
+<rect x="493.6" y="276.5" width="54.0" height="83.5" rx="5" fill="url(#orangeGrad)" filter="url(#glow)"/>
+<text x="520.6" y="268.5" fill="#fb923c" font-size="12" font-weight="700" text-anchor="middle">850.0 MB</text>
+<text x="520.6" y="382" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">RAGE GTA 5 (Init Base)</text>
+<rect x="482.6" y="392" width="76" height="17" rx="8.5" fill="#bd561d" fill-opacity="0.2" stroke="#f0883e" stroke-width="0.8"/>
+<text x="520.6" y="404" fill="#f0883e" font-size="10" font-weight="600" text-anchor="middle">Engine Init</text>
+<rect x="669.9" y="116.4" width="54.0" height="243.6" rx="5" fill="url(#orangeGrad)" filter="url(#glow)"/>
+<text x="696.9" y="108.4" fill="#fb923c" font-size="12" font-weight="700" text-anchor="middle">2,480.0 MB</text>
+<text x="696.9" y="382" fill="#e6edf3" font-size="11.5" font-weight="600" text-anchor="middle">RAGE GTA 5 (In-Game)</text>
+<rect x="658.9" y="392" width="76" height="17" rx="8.5" fill="#bd561d" fill-opacity="0.2" stroke="#f0883e" stroke-width="0.8"/>
+<text x="696.9" y="404" fill="#f0883e" font-size="10" font-weight="600" text-anchor="middle">Full World</text>
+</svg>

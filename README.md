@@ -58,48 +58,16 @@ flowchart TD
 ## Visual Performance Benchmarks
 
 ### 1. Subsystem Throughput Comparison (Higher is Better)
-> 🟦 **Blue (First Bar)**: **FerrumRAGE (Rust)** | 🟧 **Orange (Second Bar)**: **RAGE Original (C++)**
-
-```mermaid
-xychart-beta
-    title "Subsystem Processing Throughput (Million ops/sec - Higher is Better)"
-    x-axis ["SIMD Math", "Memory Pool", "Atmosphere"]
-    y-axis "Million Operations / sec" 0 --> 320
-    bar [285, 61, 159]
-    bar [95, 22, 45]
-```
+![Subsystem Processing Throughput](docs/charts/throughput.svg)
 
 ### 2. Simulation Frame Rate Headroom (Higher is Better)
-> 🟦 **Blue (First Bar)**: **FerrumRAGE (Rust)** | 🟧 **Orange (Second Bar)**: **RAGE Original (C++)**
-
-```mermaid
-xychart-beta
-    title "Simulation Frame Rate & Headroom (FPS - Higher is Better)"
-    x-axis ["ECS (5k Entities)", "Vehicles (50 Active)", "Script Fibers (1k)"]
-    y-axis "Frames Per Second (FPS)" 0 --> 1000
-    bar [494, 844, 950]
-    bar [160, 220, 280]
-```
+![Simulation Frame Rate Headroom](docs/charts/simulation_fps.svg)
 
 ### 3. Memory Footprint Comparison (Lower is Better)
-
-```mermaid
-xychart-beta
-    title "Memory Footprint Comparison (Megabytes - Lower is Better)"
-    x-axis ["FerrumRAGE (Base)", "FerrumRAGE (+1k Textures)", "RAGE (Init)", "RAGE (In-Game)"]
-    y-axis "RAM Usage (MB)" 0 --> 2600
-    bar [4.2, 57.9, 850.0, 2480.0]
-```
+![Memory Footprint Comparison](docs/charts/memory_footprint.svg)
 
 ### 4. Progressive Texture Streaming Latency vs Distance (Lower is Better)
-
-```mermaid
-xychart-beta
-    title "Progressive Streaming Latency vs Distance (Milliseconds - Lower is Better)"
-    x-axis ["Close (<15m)", "Near (15-40m)", "Mid (40-100m)", "Far (100-250m)", "Horizon (>250m)"]
-    y-axis "Streaming Latency (ms)" 0 --> 20
-    line [15.44, 6.20, 2.15, 0.45, 0.05]
-```
+![Progressive Texture Streaming Latency](docs/charts/streaming_latency.svg)
 
 ---
 

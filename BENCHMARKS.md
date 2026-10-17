@@ -1,82 +1,41 @@
 # FerrumRAGE Engine Benchmarks & Fair Comparative Analysis
 
-This document provides **empirical benchmark figures** measured directly from **FerrumRAGE** (built with pure Rust), paired with an **honest, objective architectural comparison** against **Subject A** (`GTA5.exe` / Rockstar Advanced Game Engine), complete with **high-contrast visual charts, color-coded legends, and spacious comparative tables**.
+This document provides **empirical benchmark figures** measured directly from **FerrumRAGE** (built with pure Rust), paired with an **honest, objective architectural comparison** against **Subject A** (`GTA5.exe` / Rockstar Advanced Game Engine), complete with **high-contrast vector charts, color-coded legends, and spacious comparative tables**.
 
 ---
 
 ## 🎨 Chart Color & Engine Identity Legend
 
-To ensure complete clarity and eliminate any ambiguity in the visual graphs below:
-
 | Swatch / Identifier | Engine | Technology & Implementation | Role in Benchmark |
 |:---:|:---|:---|:---|
-| 🟦 **Blue Bars (Series 1)** | **FerrumRAGE** | Pure Rust (opt-level 3, LTO, SIMD-vectorized) | Our Clean-Room Independent Engine |
-| 🟧 **Orange / Secondary Bars (Series 2)** | **Subject A (RAGE Original)** | C++ (GTA5.exe production runtime) | AAA Commercial Benchmark Baseline |
-
-> [!NOTE]
-> All x-axis labels have been streamlined and spaced to prevent any text overlapping or crowding across different display sizes and GitHub mobile/desktop themes.
+| 🟦 **Vibrant Blue (`#38bdf8`)** | **FerrumRAGE** | Pure Rust (opt-level 3, LTO, SIMD-vectorized) | Our Clean-Room Independent Engine |
+| 🟧 **Vibrant Orange (`#fb923c`)** | **Subject A (RAGE Original)** | C++ (GTA5.exe production runtime) | AAA Commercial Benchmark Baseline |
 
 ---
 
 ## 1. Visual Benchmark Charts & Graphs
 
 ### 1.1 Core Subsystem Throughput Comparison (Higher is Better)
-> 🟦 **Blue (First Bar)**: **FerrumRAGE (Rust)** | 🟧 **Orange (Second Bar)**: **RAGE Original (C++)**
-
-```mermaid
-xychart-beta
-    title "Subsystem Processing Throughput (Million ops/sec - Higher is Better)"
-    x-axis ["SIMD Math", "Memory Pool", "Atmosphere"]
-    y-axis "Million Operations / sec" 0 --> 320
-    bar [285, 61, 159]
-    bar [95, 22, 45]
-```
+![Subsystem Processing Throughput](docs/charts/throughput.svg)
 
 ---
 
 ### 1.2 Simulation Frame Rate Headroom (Higher is Better)
-> 🟦 **Blue (First Bar)**: **FerrumRAGE (Rust)** | 🟧 **Orange (Second Bar)**: **RAGE Original (C++)**
-
-```mermaid
-xychart-beta
-    title "Simulation Frame Rate & Headroom (FPS - Higher is Better)"
-    x-axis ["ECS (5k Entities)", "Vehicles (50 Active)", "Script Fibers (1k)"]
-    y-axis "Frames Per Second (FPS)" 0 --> 1000
-    bar [494, 844, 950]
-    bar [160, 220, 280]
-```
+![Simulation Frame Rate Headroom](docs/charts/simulation_fps.svg)
 
 ---
 
 ### 1.3 Memory Footprint: Engine Startup & Base Overhead (Lower is Better)
-> Demonstrates the extreme lightweight nature of pure Rust vs a monolithic C++ engine runtime.
-
-```mermaid
-xychart-beta
-    title "Memory Footprint Comparison (Megabytes - Lower is Better)"
-    x-axis ["FerrumRAGE (Base)", "FerrumRAGE (+1k Textures)", "RAGE (Init)", "RAGE (In-Game)"]
-    y-axis "RAM Usage (MB)" 0 --> 2600
-    bar [4.2, 57.9, 850.0, 2480.0]
-```
+![Memory Footprint Comparison](docs/charts/memory_footprint.svg)
 
 ---
 
 ### 1.4 Progressive Texture Streaming Latency vs Distance LOD (Lower is Better)
-> Shows progressive Mipmap load times as camera distance changes.
-
-```mermaid
-xychart-beta
-    title "Progressive Streaming Latency vs Distance (Milliseconds - Lower is Better)"
-    x-axis ["Close (<15m)", "Near (15-40m)", "Mid (40-100m)", "Far (100-250m)", "Horizon (>250m)"]
-    y-axis "Streaming Latency (ms)" 0 --> 20
-    line [15.44, 6.20, 2.15, 0.45, 0.05]
-```
+![Progressive Texture Streaming Latency](docs/charts/streaming_latency.svg)
 
 ---
 
 ## 2. High-Contrast Side-by-Side Visual Comparison
-
-Here is an uncluttered, spacious breakdown with visual bar gauges comparing both engines:
 
 | Subsystem & Benchmark | Engine | Measured Value | Visual Comparison Bar | Performance Ratio |
 |:---|:---|:---|:---|:---:|
